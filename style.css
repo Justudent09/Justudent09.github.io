@@ -4,7 +4,7 @@ html, body{
    display: flex; 
    align-items: center; 
    justify-content: center; 
-   background-color: #000;
+   background-color: rgb(23, 27, 22);
 }
 .wave{ 
    position: relative;
