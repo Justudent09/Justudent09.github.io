@@ -9,7 +9,7 @@ html, body{
 
 .timetable{
    display: flex;
-   flex-direction: colum;
+   flex-direction: column;
 }
 
 .profile{
