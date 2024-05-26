@@ -13,19 +13,19 @@ html, body{
 }
 
 .profile{
-   width: 100%;
+   width: 370px;
    height: 200px;
    background-color: #FF0000;
 }
 
 .horizontal-scroll{
-   width: 100%;
+   width: 370px;
    height: 100px;
    background-color: #FFFFFF;
 }
 
 .couple{
-   width: 100%;
+   width: 370px;
    height: 720px;
    background-color: #000000;
 }
