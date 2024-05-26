@@ -10,18 +10,16 @@ html, body{
 .profile{
    width: 100%;
    height: 200px;
-   background-color: #000000;
 }
 
 .horizontal_scroll{
    width: 100%;
    height: 100px;
-   background-color: #AAAAAA;
 }
 
 .couple{
    width: 100%;
-   height: 100%;
+   height: 720px;
    background-color: #d0d0d0;
 }
 
