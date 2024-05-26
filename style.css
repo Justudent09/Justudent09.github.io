@@ -9,7 +9,7 @@ html, body {
     flex-direction: column;
 }
 .timetable {
-    width: 100%;
+    width: 100vw;
 }
 .profile {
     height: 200px;
