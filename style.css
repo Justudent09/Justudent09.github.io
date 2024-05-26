@@ -10,7 +10,7 @@ html, body {
     align-items: center;
 }
 .timetable {
-    width: calc(100% - 20px);
+    width: 100%;
     margin: 10px;
 }
 .profile {
