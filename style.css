@@ -7,12 +7,17 @@ html, body{
    background-color: #17161B;
 }
 
+.timetable{
+   display: flex;
+   flex-direction: colum;
+}
+
 .profile{
    width: 100%;
    height: 200px;
 }
 
-.horizontal_scroll{
+.horizontal-scroll{
    width: 100%;
    height: 100px;
 }
