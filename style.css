@@ -32,18 +32,10 @@ html, body{
    background-color: #7a4d64;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* Медиа-запрос для мобильных устройств */
+@media only screen and (max-width: 390px) {
+  .container, .profile, .horizontal-scroll, .couples {
+    width: 100%;
+    max-width: none;
+  }
+}
