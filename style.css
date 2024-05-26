@@ -6,7 +6,7 @@ html, body {
 
 .container {
    width: 100%;
-   max-width: 390px;
+   max-width: 100000px;
 }
 
 .timetable {
