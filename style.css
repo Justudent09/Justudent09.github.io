@@ -1,10 +1,11 @@
 html, body{
-   height: 100vh; 
-   width: 100vw; 
-   display: flex; 
-   align-items: center;
-   justify-content: center; 
+   margin: 0;
+   padding: 0;
    background-color: #17161B;
+}
+
+.container{
+   max-width: 370px;
 }
 
 .timetable{
