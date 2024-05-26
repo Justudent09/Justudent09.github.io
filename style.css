@@ -10,6 +10,8 @@ html, body{
 .timetable{
    display: flex;
    flex-direction: colum;
+   height: 1020px;
+   width: 370px;
 }
 
 .profile{
