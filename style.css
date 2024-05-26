@@ -1,50 +1,32 @@
-body {
-	margin: 0;
-	padding: 0;
-	font-size: 18px;
-	color: var(--tg-theme-text-color);
-	background: var(--tg-theme-bg-color);
+html, body{
+   height: 100%; 
+   width: 100%; 
+   display: flex; 
+   align-items: center; 
+   justify-content: center; 
+   background-color: #000;
 }
-
-.container {
-	max-width: 390px;
+.wave{ 
+   position: relative;
+   -webkit-box-reflect: below -20px linear-gradient(transparent, rgba(255, 251, 251, 0.363));
 }
-
-.inner {
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 200px 200px 200px;
+.wave span{ 
+   color: white; 
+   position: relative; 
+   display: inline-block; 
+   font-size: 3rem; 
+   text-transform: uppercase; 
+   animation: waviy 1s infinite; 
+   animation-delay: calc(.1s * var(--i));
 }
-
-.img {
-	width: 150px;
+@keyframes waviy { 
+   0%, 40%, 100%{
+      transform: translateY(0);
+   }
+   20%{
+      transform: translateY(-20px);
+   }
 }
-
-.item {
-	text-align: center;
-}
-
-.btn {
-	display: inline-block;
-	padding: 10px 20px;
-	border: none;
-	background: rgb(248, 168, 24);
-	border-radius: 10px;
-	color: #fff;
-	text-transform: uppercase;
-	font-weight: 700;
-
-	transition: background .2s linear;
-}
-
-.btn:hover {
-	background: lightgreen;
-}
-
-.usercard {
-	text-align: center;
-}
-
 
 
 
