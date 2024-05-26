@@ -6,27 +6,25 @@ html, body{
    justify-content: center; 
    background-color: #17161B;
 }
-.wave{ 
-   position: relative;
-   -webkit-box-reflect: below -20px linear-gradient(transparent, rgba(255, 251, 251, 0.363));
+
+.profile{
+   width: 100%;
+   height: 200px;
+   background-color: #000000
 }
-.wave span{ 
-   color: white; 
-   position: relative; 
-   display: inline-block; 
-   font-size: 3rem; 
-   text-transform: uppercase; 
-   animation: waviy 1s infinite; 
-   animation-delay: calc(.1s * var(--i));
+
+.horizontal_scroll{
+   width: 100%;
+   height: 100px;
+   background-color: #AAAAAA
 }
-@keyframes waviy { 
-   0%, 40%, 100%{
-      transform: translateY(0);
-   }
-   20%{
-      transform: translateY(-20px);
-   }
+
+.profile{
+   width: 100%;
+   height: 100%;
+   background-color: #d0d0d0;
 }
+
 
 
 
