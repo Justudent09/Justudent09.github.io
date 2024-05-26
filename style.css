@@ -5,7 +5,7 @@ html, body{
 }
 
 .container{
-   max-width: 370px;
+   max-width: 390px;
 }
 
 .timetable{
@@ -14,19 +14,19 @@ html, body{
 }
 
 .profile{
-   width: 370px;
+   width: 100vw;
    height: 200px;
    background-color: #FF0000;
 }
 
 .horizontal-scroll{
-   width: 370px;
+   width: 100vw;
    height: 100px;
    background-color: #FFFFFF;
 }
 
 .couples{
-   width: 370px;
+   width: 100vw;
    height: 720px;
    background-color: #7a4d64;
 }
