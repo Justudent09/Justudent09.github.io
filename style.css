@@ -5,31 +5,23 @@ html, body {
 }
 
 .container {
-   width: 100%;
-   max-width: 100000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-
 .timetable {
-   display: flex;
-   flex-direction: column;
-   width: 100%; /* Чтобы занимать всю ширину родителя */
+    width: calc(100% - 20px);
+    margin: 10px;
 }
-
-.profile, .horizontal-scroll, .couples {
-   width: 100%; /* Занимать всю доступную ширину родительского элемента */
-}
-
 .profile {
-   height: 200px;
-   background-color: #FF0000;
+    height: 200px;
+    background-color: #f0f0f0;
 }
-
 .horizontal-scroll {
-   height: 100px;
-   background-color: #FFFFFF;
+    height: 100px;
+    background-color: #ccc;
 }
-
 .couples {
-   height: 720px;
-   background-color: #7a4d64;
+    height: 720px;
+    background-color: #999;
 }
