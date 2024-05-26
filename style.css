@@ -1,41 +1,35 @@
-html, body{
+html, body {
    margin: 0;
    padding: 0;
    background-color: #17161B;
 }
 
-.container{
+.container {
    width: 100%;
-   max-width: 10000px;
+   max-width: 390px;
 }
 
-.timetable{
+.timetable {
    display: flex;
    flex-direction: column;
+   width: 100%; /* Чтобы занимать всю ширину родителя */
 }
 
-.profile{
-   width: 100%;
+.profile, .horizontal-scroll, .couples {
+   width: 100%; /* Занимать всю доступную ширину родительского элемента */
+}
+
+.profile {
    height: 200px;
    background-color: #FF0000;
 }
 
-.horizontal-scroll{
-   width: 100%;
+.horizontal-scroll {
    height: 100px;
    background-color: #FFFFFF;
 }
 
-.couples{
-   width: 100%;
+.couples {
    height: 720px;
    background-color: #7a4d64;
-}
-
-/* Медиа-запрос для мобильных устройств */
-@media only screen and (max-width: 390px) {
-  .container, .profile, .horizontal-scroll, .couples {
-    width: 100%;
-    max-width: none;
-  }
 }
