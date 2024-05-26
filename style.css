@@ -1,7 +1,7 @@
 html, body {
    margin: 0;
    padding: 0;
-   background-color: #FF0000;
+   background-color: #17161B;
 }
 
 .container {
@@ -13,13 +13,28 @@ html, body {
 }
 .profile {
     height: 200px;
-    background-color: #f0f0f0;
 }
 .horizontal-scroll {
     height: 100px;
-    background-color: #ccc;
 }
 .couples {
     height: 720px;
-    background-color: #999;
+}
+
+.couple{
+    width: 260;
+    height: 120;
+    margin-right: 20px;
+    background-color: #28272C;
+}
+
+.couple: first-child{
+    margin-top: 30px;
+}
+
+.couple + .couple { 
+    margin-top: 15px; 
+    position: absolute; 
+    top: 0; 
+    right: 20px;
 }
