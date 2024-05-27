@@ -12,24 +12,20 @@ ihtml, body {
     width: 100%;
 }
 .profile {
-    height: 200px;
+    height: 50vh;
 }
 .horizontal-scroll {
-    height: 100px;
+    height: 30hvh;
 }
 .couples {
-    height: 720px;
+    height: 85vh;
 }
 
 .couple{
     width: 260px;
     height: 120px;
-    margin-right: 20px;
+    border-radius: 25px;
     background-color: #28272C;
-}
-
-.couple: first-child{
-    margin-top: 30px;
 }
 
 .couple + .couple { 
