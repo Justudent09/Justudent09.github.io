@@ -1,4 +1,5 @@
 html, body {
+   -webkit-tap-highlight-color: transparent;
    margin: 0;
    padding: 0;
    background-color: #17161B;
@@ -77,8 +78,8 @@ h1 {
 .my-div{
     scroll-snap-align: center;
     margin: 3vw;
-    width: 8vw;
-    height: 25vw;
+    width: 4em;
+    height: 7em;
     min-width: 3.5em;
     min-height: 3em;
     border-radius: 50vh;
@@ -91,8 +92,8 @@ h1 {
     margin-left:0.25em;
     background: #28272C;
     border-radius: 50%;
-    height: 6vw;
-    width: 6vw;
+    height: 3em;
+    width: 3em;
     min-width: 3em;
     min-height: 3em;
     display: flex;
