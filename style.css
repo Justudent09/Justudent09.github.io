@@ -1,4 +1,4 @@
-ihtml, body {
+html, body {
    margin: 0;
    padding: 0;
    background-color: #17161B;
@@ -22,8 +22,8 @@ ihtml, body {
 }
 
 .couple{
-    width: 260px;
-    height: 120px;
+    width: 70vw;
+    height: 17vh;
     border-radius: 25px;
     background-color: #28272C;
 }
