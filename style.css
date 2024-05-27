@@ -16,6 +16,7 @@ html, body {
 }
 .horizontal-scroll {
     height: 30hvh;
+    background-color: #FFFFFF;
 }
 .couples {
     height: 85vh;
