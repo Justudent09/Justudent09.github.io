@@ -2,7 +2,10 @@ html, body {
    margin: 0;
    padding: 0;
    background-color: #17161B;
-   box-sizing: border-box;
+   box-sizing: border-box;;
+   font-family: urbane-rounded, sans-serif;
+   font-style: normal;
+   font-weight: 500;
 }
 
 *, *::before, *::after {
@@ -26,6 +29,7 @@ html, body {
     min-height: 15vh;
     display: flex;
     overflow-x: auto;    
+    scroll-snap-type: x mandatory;
 }
 
 .horizontal-scroll::-webkit-scrollbar {
@@ -33,20 +37,20 @@ html, body {
 }
 
 .my-div{
+    scroll-snap-align: center;
     margin: 3vw;
     width: 8vw;
     height: 25vw;
     min-width: 3.5em;
     min-height: 3em;
     border-radius: 50vh;
-    background-color: #28272C;
     text-align: center;
 }
 
 .circle {
     margin-top: 0.25em;
     margin-left:0.25em;
-    background: linear-gradient(#B4B2E2,#9293DF);
+    background: #28272C;
     border-radius: 50%;
     height: 6vw;
     width: 6vw;
@@ -81,5 +85,5 @@ html, body {
     background-color: #28272C;
     position: absolute;
     right: 0;
-}0;
 }
+
