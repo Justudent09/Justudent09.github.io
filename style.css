@@ -77,7 +77,7 @@ h1 {
 
 .my-div{
     scroll-snap-align: center;
-    margin: 3vw;
+    margin: 0.8em;
     width: 4em;
     height: 7em;
     min-width: 3.5em;
