@@ -13,6 +13,7 @@ html, body {
 }
 .profile {
     height: 35vh;
+    background-color: #FF0000;
 }
 .horizontal-scroll {
     height: 15vh;
