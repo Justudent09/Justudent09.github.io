@@ -12,21 +12,28 @@ html, body {
     width: 100%;
 }
 .profile {
-    height: 30vh;
+    height: 33vh;
+    background-color: #FF0000;
 }
 .horizontal-scroll {
-    height: 20vh;
+    height: 15vh;
     background-color: #FFFFFF;
 }
 .couples {
-    height: 85vh;
+    height: 90vh;
 }
 
 .couple{
     width: 70vw;
     height: 18vh;
+    position: relative;
+    left: 26vw;
     border-radius: 25px;
     background-color: #28272C;
+}
+
+.couple: first-child{
+    top: 4vh;
 }
 
 .couple + .couple { 
