@@ -9,7 +9,7 @@ html, body {
    box-sizing: inherit;
 }
 
-.container {
+.container1 {
     display: flex;
     flex-direction: column;
 }
@@ -19,13 +19,44 @@ html, body {
 }
 
 .profile {
-    height: 33vh;
-    background-color: #FF0000;
+    height: 35vh;
 }
 
 .horizontal-scroll {
-    height: 15vh;
-    background-color: #FFFFFF;
+    min-height: 15vh;
+    display: flex;
+    overflow-x: auto;    
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+    width: 0;
+}
+
+.my-div{
+    margin: 3vw;
+    width: 8vw;
+    height: 25vw;
+    min-width: 3.5em;
+    min-height: 3em;
+    border-radius: 50vh;
+    background-color: #28272C;
+    text-align: center;
+}
+
+.circle {
+    margin-top: 0.25em;
+    margin-left:0.25em;
+    background: linear-gradient(#B4B2E2,#9293DF);
+    border-radius: 50%;
+    height: 6vw;
+    width: 6vw;
+    min-width: 3em;
+    min-height: 3em;
+    display: flex;
+    justify-content: center;    
+    align-items: center;
+    color: white;   
+    font-size: 1em;
 }
 
 .contour {
@@ -39,7 +70,7 @@ html, body {
     position: relative;
 }
 
-.time{
+.time {
     color: #FFFFFF;
 }
 
@@ -50,4 +81,5 @@ html, body {
     background-color: #28272C;
     position: absolute;
     right: 0;
+}0;
 }
