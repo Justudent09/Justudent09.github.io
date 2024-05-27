@@ -28,26 +28,26 @@ html, body {
 
 .icon-profile {
     border-radius: 50%;
-    height: 6em;
-    width: 6em;
+    height: 18vw;
+    width: 18vw;
     min-width: 3em;
     min-height: 3em;
     background-color: #28272C;
 }
 .months {
-    height: 2em;
-    width: 8em;
+    height: 10vw;
+    width: 30vw;
     min-width: 3em;
     min-height: 3em;
     border-radius: 30vh;
     background-color: red;
     position: absolute;
-    left: calc(50% - 4em);
+    left: calc(50% - 15vw);
 }
 
 .notifications {
-    height: 4em;
-    width: 4em;
+    height: 15vw;
+    width: 15vw;
     border-radius: 30%;
     background-color: #28272C;
     position: absolute;
@@ -65,7 +65,7 @@ h1 {
 }
 
 .horizontal-scroll {
-    min-height: 6em;
+    min-height: 15vh;
     display: flex;
     overflow-x: auto;    
     scroll-snap-type: x mandatory;
@@ -109,7 +109,7 @@ h1 {
 }
 
 .c1 {
-    height: 9em;
+    height: 18vh;
     display: flex;
     margin-top: 4%;
     position: relative;
@@ -120,9 +120,9 @@ h1 {
 }
 
 .couple {
-    width: 17em;
-    height: 9em;
-    border-radius: 4vh;
+    width: 70vw;
+    height: 18vh;
+    border-radius: 25px;
     background-color: #28272C;
     position: absolute;
     right: 0;
