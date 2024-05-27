@@ -2,6 +2,11 @@ html, body {
    margin: 0;
    padding: 0;
    background-color: #17161B;
+   box-sizing: border-box;
+}
+
+*, *::before, *::after {
+   box-sizing: inherit;
 }
 
 .container {
@@ -23,19 +28,26 @@ html, body {
     background-color: #FFFFFF;
 }
 
-.contour{
-    margin: 5% 5% 5%  5%;
+.contour {
+    margin: 5%;
 }
 
-.couple{
+.c1 {
+    height: 18vh;
+    display: flex;
+    margin-top: 4%;
+    position: relative;
+}
+
+.time{
+    color: #FFFFFF;
+}
+
+.couple {
     width: 70vw;
     height: 18vh;
-    position: relative;
-    left: calc(100% - 70vw);
     border-radius: 25px;
     background-color: #28272C;
-}
-
-.couple + .couple { 
-    margin-top: 15px;
+    position: absolute;
+    right: 0;
 }
