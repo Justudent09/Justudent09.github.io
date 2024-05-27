@@ -8,32 +8,36 @@ html, body {
     display: flex;
     flex-direction: column;
 }
+
 .timetable {
     width: 100%;
 }
+
 .profile {
     height: 33vh;
     background-color: #FF0000;
 }
+
 .horizontal-scroll {
     height: 15vh;
     background-color: #FFFFFF;
 }
+
 .couples {
-    height: 90vh;
+    height: 100vh;
+}
+
+.contour{
+    margin: 20px 20px 20px 20px;
 }
 
 .couple{
     width: 70vw;
     height: 18vh;
     position: relative;
-    left: 26vw;
+    left: calc(100% - 70vw);
     border-radius: 25px;
     background-color: #28272C;
-}
-
-.couple: first-child{
-    top: 4vh;
 }
 
 .couple + .couple { 
