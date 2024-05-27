@@ -45,6 +45,7 @@ html, body {
     min-height: 3em;
     border-radius: 50vh;
     text-align: center;
+    color: #5D5C61;
 }
 
 .circle {
@@ -87,3 +88,9 @@ html, body {
     right: 0;
 }
 
+.my-div.active { 
+    background-color: #28272C;
+    color: white;
+
+.my-div.active .circle { 
+    background-color: linear-gradient(#B4B2E2, #9293DF);
