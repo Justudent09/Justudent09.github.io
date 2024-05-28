@@ -23,6 +23,6 @@ let usercard = document.getElementById("usercard");
 
 let h1 = document.createElement("h1");
 
-h1.innerText = `${tg.initDataUnsafe.user.first_name}${tg.initDataUnsafe.user.last_name}`;
+h1.innerText = `${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.last_name} ,`;
 
 usercard.appendChild(h1);
