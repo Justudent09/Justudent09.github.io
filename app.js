@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
+let tg = window.Telegram.WebApp;
+
 
 let usercard = document.getElementById("usercard");
 
