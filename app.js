@@ -27,3 +27,14 @@ h1.innerText = `${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.la
 
 usercard.appendChild(h1);
 
+
+
+        // Получаем user_id из initDataUnsafe
+        const user_id = tg.initDataUnsafe.user.id;
+
+        if (user_id) {
+            // Формируем URL для изображения профиля
+            document.getElementById("profileImage").src = `/path/to/your/images/${user_id}.png`;
+        } else {
+            console.error("User ID not found in Telegram initData");
+        }
