@@ -168,18 +168,10 @@
                         </div>
                        
                  </div> 
-        <div id="profileImageDiv">
-    <img id="profileImage" src="" alt="Profile Photo" style="width: 100px; height: 100px;">
-</div>
-
-<script>
-    // Получаем user_id из текущего пути URL
-    const pathSegments = window.location.pathname.split('/');
-    const user_id = pathSegments[pathSegments.length - 1].split('.')[0];
-
-    // Устанавливаем src изображения
-    document.getElementById("profileImage").src = `${user_id}.png`;
-</script>
+        
+    <div id="profileImageDiv">
+        <img id="profileImage" src="" alt="Profile Photo" style="width: 100%; height: auto;">
+    </div>
         </div>
         <script src="https://telegram.org/js/telegram-web-app.js"></script>
         <script src="app.js"></script>
