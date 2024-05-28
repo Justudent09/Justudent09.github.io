@@ -27,7 +27,3 @@ h1.innerText = `${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.la
 
 usercard.appendChild(h1);
 
-if (tg.initDataUnsafe.user.photo_url) {
-    let img = document.getElementById("profileImage");
-    img.src = tg.initDataUnsafe.user.photo_url;
-}
