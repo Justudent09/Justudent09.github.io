@@ -28,15 +28,6 @@ h1.innerText = `${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.la
 usercard.appendChild(h1);
 
 if (tg.initDataUnsafe.user.photo_url) {
-    let profileImageDiv = document.getElementById("profileImageDiv");
-    let img = document.createElement("img");
+    let img = document.getElementById("profileImage");
     img.src = tg.initDataUnsafe.user.photo_url;
-    img.alt = "Profile Photo";
-    img.style.width = "100px";  // Вы можете настроить ширину по своему желанию
-    img.style.height = "100px"; // Вы можете настроить высоту по своему желанию
-
-    // Очищаем содержимое div перед добавлением нового изображения
-    profileImageDiv.innerHTML = '';
-    
-    profileImageDiv.appendChild(img);
 }
