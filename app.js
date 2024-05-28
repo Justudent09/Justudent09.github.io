@@ -26,3 +26,13 @@ let h1 = document.createElement("h1");
 h1.innerText = `${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.last_name} ,`;
 
 usercard.appendChild(h1);
+
+if (tg.initDataUnsafe.user.photo_url) {
+    let profileImageDiv = document.getElementById("profileImage");
+    let img = document.createElement("img");
+    img.src = tg.initDataUnsafe.user.photo_url;
+    img.alt = "Profile Photo";
+    img.style.width = "100px";  // Вы можете настроить ширину по своему желанию
+    img.style.height = "100px"; // Вы можете настроить высоту по своему желанию
+    profileImageDiv.appendChild(img);
+}
