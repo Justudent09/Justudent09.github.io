@@ -40,7 +40,6 @@ html, body {
     min-width: 3em;
     min-height: 3em;
     border-radius: 30vh;
-    background-color: red;
     position: absolute;
     left: calc(50% - 15vw);
     color: white;
