@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function() {
             const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
             const daysContainer = document.getElementById("daysContainer");
 
-            // Массив с названиями дней недели
             const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
             let activeDayDiv;
@@ -43,7 +42,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     activeDayDiv = dayDiv;
                 }
 
-                // Добавляем обработчик событий для каждого div
                 dayDiv.addEventListener('click', function() {
                     if (activeDayDiv) {
                         activeDayDiv.classList.remove('active');
@@ -58,7 +56,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 });
             }
 
-            // Устанавливаем текущую дату в элемент с id "currentDateDiv"
             const monthNames = [
                 "Jan", "Feb", "Mar", "Apr", "May", "Jun",
                 "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
@@ -70,10 +67,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
             document.getElementById("currentDateDiv").innerText = currentDate;
 
-            // Прокручиваем к активному дню
             if (activeDayDiv) {
                 const index = Array.prototype.indexOf.call(daysContainer.children, activeDayDiv);
-                const offset = Math.max(index - 1, 0); // Учитываем, что первый элемент не должен прокручиваться слишком сильно
+                const offset = Math.max(index - 1, 0);
                 daysContainer.scrollLeft = daysContainer.children[offset].offsetLeft - daysContainer.offsetWidth / 2 + activeDayDiv.offsetWidth / 2;
             }
         });
