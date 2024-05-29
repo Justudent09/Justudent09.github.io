@@ -43,6 +43,11 @@ html, body {
     background-color: red;
     position: absolute;
     left: calc(50% - 15vw);
+    color: white;
+    display: flex;    
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .notifications {
