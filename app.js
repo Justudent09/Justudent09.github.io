@@ -28,5 +28,15 @@ h1.innerText = `${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.la
 usercard.appendChild(h1);
 
 
+const now = new Date();
+        const monthNames = [
+            "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+        ];
 
+        const year = now.getFullYear();
+        const monthName = monthNames[now.getMonth()];
+        const currentDate = `${monthName}, ${year}`;
+
+        document.getElementById("currentDateDiv").innerText = currentDate;
       
