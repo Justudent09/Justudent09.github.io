@@ -34,6 +34,7 @@ html, body {
     min-height: 3em;
     background-color: #28272C;
 }
+
 .months {
     height: 10vw;
     width: 30vw;
@@ -139,6 +140,8 @@ h1 {
 .my-div.active { 
     background-color: #28272C;
     color: white;
+}
 
 .my-div.active .circle { 
     background: linear-gradient(#B4B2E2, #9293DF);
+}
