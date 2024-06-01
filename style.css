@@ -34,7 +34,6 @@ html, body {
     min-height: 3em;
     background-color: #28272C;
 }
-
 .months {
     height: 10vw;
     width: 30vw;
@@ -63,10 +62,6 @@ html, body {
     margin:10% 5% 0% 5%;
     align-items: center;
     position: relative; 
-}
-
-.usercard{
-    color: white;
 }
 
 h1 {
@@ -135,6 +130,11 @@ h1 {
     background-color: #28272C;
     position: absolute;
     right: 0;
+    color: white;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .my-div.active { 
