@@ -88,7 +88,11 @@ document.addEventListener("DOMContentLoaded", function() {
         const schedule = scheduleData[date];
 
         coupleDivs.forEach((div, index) => {
-            div.textContent = schedule ? schedule[index] || "" : "";
+            if (schedule && schedule[index]) {
+                div.textContent = schedule[index];
+            } else {
+                div.textContent = "выходной";
+            }
         });
     }
 
