@@ -91,4 +91,8 @@ document.addEventListener("DOMContentLoaded", function() {
             div.textContent = schedule ? schedule[index] || "" : "";
         });
     }
+
+    // Ensure the content is updated for the initial active date
+    const initialActiveDate = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${String(now.getFullYear()).slice(-2)}`;
+    updateCouplesContent(initialActiveDate);
 });
