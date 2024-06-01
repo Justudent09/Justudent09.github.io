@@ -93,7 +93,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 div.textContent = schedule[index];
                 allEmpty = false;
             } else {
-                div.textContent = "нет пары";
+                div.textContent = "";
             }
         });
 
