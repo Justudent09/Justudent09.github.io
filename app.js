@@ -8,22 +8,57 @@ h1.innerText = `${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.la
 
 usercard.appendChild(h1);
 
-document.addEventListener("DOMContentLoaded", function() {
+document.getElementById('fileInput').addEventListener('change', handleFile, false);
+
+let scheduleData = {};
+
+function handleFile(event) {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+
+    reader.onload = function(event) {
+        const data = new Uint8Array(event.target.result);
+        const workbook = XLSX.read(data, {type: 'array'});
+        const firstSheetName = workbook.SheetNames[0];
+        const worksheet = workbook.Sheets[firstSheetName];
+        const jsonData = XLSX.utils.sheet_to_json(worksheet, {header: 1});
+
+        processData(jsonData);
+    };
+
+    reader.readAsArrayBuffer(file);
+}
+
+function processData(data) {
+    scheduleData = {};
+    for (let i = 0; i < data.length; i++) {
+        const row = data[i];
+        if (row[0] && typeof row[0] === 'string' && row[0].match(/^\d{2}\/\d{2}\/\d{2}$/)) {
+            const date = row[0];
+            scheduleData[date] = [];
+            for (let j = 2; j <= 6; j++) {
+                if (data[i + j] && data[i + j][3]) {
+                    scheduleData[date].push(data[i + j][3] || "нет пары");
+                } else {
+                    scheduleData[date].push("нет пары");
+                }
+            }
+        }
+    }
+
+    // Обновление текущей даты
+    const now = new Date();
+    const formattedDate = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${String(now.getFullYear()).slice(-2)}`;
+    updateCouplesContent(formattedDate);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
     const now = new Date();
     const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
     const daysContainer = document.getElementById("daysContainer");
 
     const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
     let activeDayDiv;
-
-    const scheduleData = {
-        "01/06/24": ["Иностранный язык"],
-        "03/06/24": ["Дискретная математика", "Дискретная математика", "Дискретная математика", "Физическая культура"],
-        "04/06/24": ["Дискретная математика", "Дискретная математика", "Дискретная математика", "Дискретная математика", "Иностранный язык"],
-        "05/06/24": ["Дискретная математика", "Дискретная математика", "Дискретная математика", "Физическая культура"],
-        "06/06/24": ["Дискретная математика", "Дискретная математика", "Дискретная математика", "Иностранный язык"],
-        "07/06/24": ["Дискретная математика", "Дискретная математика", "Дискретная математика"]
-    };
 
     for (let i = 1; i <= daysInMonth; i++) {
         const dayDiv = document.createElement("div");
@@ -82,30 +117,33 @@ document.addEventListener("DOMContentLoaded", function() {
         const offset = Math.max(index - 1, 0);
         daysContainer.scrollLeft = daysContainer.children[offset].offsetLeft - daysContainer.offsetWidth / 2 + activeDayDiv.offsetWidth / 2;
     }
+});
 
-    function updateCouplesContent(date) {
-        const couplesContainer = document.querySelector(".contour");
-        const coupleDivs = couplesContainer.querySelectorAll(".couple");
-        const schedule = scheduleData[date];
+function updateCouplesContent(date) {
+    const couplesContainer = document.querySelector(".contour");
+    const coupleDivs = couplesContainer.querySelectorAll(".couple");
+    const schedule = scheduleData[date];
 
-        let allEmpty = true;
-        coupleDivs.forEach((div, index) => {
-            if (schedule && schedule[index]) {
-                div.textContent = schedule[index];
-                allEmpty = false;
-            } else {
-                div.textContent = "";
-            }
+    if (!schedule || schedule.length === 0) {
+        coupleDivs.forEach((div) => {
+            div.textContent = "выходной";
         });
-
-        if (allEmpty) {
-            coupleDivs.forEach((div) => {
-                div.textContent = "выходной";
-            });
-        }
+        return;
     }
 
-    // Ensure the content is updated for the initial active date
-    const initialActiveDate = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${String(now.getFullYear()).slice(-2)}`;
-    updateCouplesContent(initialActiveDate);
-});
+    let allEmpty = true;
+    coupleDivs.forEach((div, index) => {
+        if (schedule[index]) {
+            div.textContent = schedule[index];
+            allEmpty = false;
+        } else {
+            div.textContent = "нет пары";
+        }
+    });
+
+    if (allEmpty) {
+        coupleDivs.forEach((div) => {
+            div.textContent = "выходной";
+        });
+    }
+}
