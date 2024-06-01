@@ -1,6 +1,5 @@
 let tg = window.Telegram.WebApp;
 
-
 let usercard = document.getElementById("usercard");
 
 let h1 = document.createElement("h1");
@@ -9,67 +8,87 @@ h1.innerText = `${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.la
 
 usercard.appendChild(h1);
 
-
 document.addEventListener("DOMContentLoaded", function() {
-            const now = new Date();
-            const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
-            const daysContainer = document.getElementById("daysContainer");
+    const now = new Date();
+    const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+    const daysContainer = document.getElementById("daysContainer");
 
-            const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    let activeDayDiv;
 
-            let activeDayDiv;
+    const scheduleData = {
+        "03/06/24": ["Дискретная математика", "Дискретная математика", "Дискретная математика", "Физическая культура"],
+        "04/06/24": ["Дискретная математика", "Дискретная математика", "Дискретная математика", "Дискретная математика", "Иностранный язык"],
+        "05/06/24": ["Дискретная математика", "Дискретная математика", "Дискретная математика", "Физическая культура"],
+        "06/06/24": ["Дискретная математика", "Дискретная математика", "Дискретная математика", "Иностранный язык"],
+        "07/06/24": ["Дискретная математика", "Дискретная математика", "Дискретная математика"]
+    };
 
-            for (let i = 1; i <= daysInMonth; i++) {
-                const dayDiv = document.createElement("div");
-                dayDiv.classList.add("my-div");
+    for (let i = 1; i <= daysInMonth; i++) {
+        const dayDiv = document.createElement("div");
+        dayDiv.classList.add("my-div");
 
-                const circleDiv = document.createElement("div");
-                circleDiv.classList.add("circle");
-                circleDiv.textContent = i;
+        const circleDiv = document.createElement("div");
+        circleDiv.classList.add("circle");
+        circleDiv.textContent = i;
 
-                const dayName = document.createElement("p");
-                const date = new Date(now.getFullYear(), now.getMonth(), i);
-                dayName.textContent = dayNames[date.getDay()];
+        const dayName = document.createElement("p");
+        const date = new Date(now.getFullYear(), now.getMonth(), i);
+        dayName.textContent = dayNames[date.getDay()];
 
-                dayDiv.appendChild(circleDiv);
-                dayDiv.appendChild(dayName);
-                daysContainer.appendChild(dayDiv);
+        dayDiv.appendChild(circleDiv);
+        dayDiv.appendChild(dayName);
+        daysContainer.appendChild(dayDiv);
 
-                if (i === now.getDate()) {
-                    dayDiv.classList.add('active');
-                    circleDiv.style.background = 'linear-gradient(#B4B2E2, #9293DF)';
-                    dayDiv.style.color = 'white';
-                    activeDayDiv = dayDiv;
-                }
+        const formattedDate = `${String(i).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${String(now.getFullYear()).slice(-2)}`;
 
-                dayDiv.addEventListener('click', function() {
-                    if (activeDayDiv) {
-                        activeDayDiv.classList.remove('active');
-                        activeDayDiv.querySelector('.circle').style.background = '#28272C';
-                        activeDayDiv.style.color = '#5D5C61';
-                    }
+        if (i === now.getDate()) {
+            dayDiv.classList.add('active');
+            circleDiv.style.background = 'linear-gradient(#B4B2E2, #9293DF)';
+            dayDiv.style.color = 'white';
+            activeDayDiv = dayDiv;
+            updateCouplesContent(formattedDate);
+        }
 
-                    this.classList.add('active');
-                    this.querySelector('.circle').style.background = 'linear-gradient(#B4B2E2, #9293DF)';
-                    this.style.color = 'white';
-                    activeDayDiv = this;
-                });
-            }
-
-            const monthNames = [
-                "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-                "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-            ];
-
-            const year = now.getFullYear();
-            const monthName = monthNames[now.getMonth()];
-            const currentDate = `${monthName}, ${year}`;
-
-            document.getElementById("currentDateDiv").innerText = currentDate;
-
+        dayDiv.addEventListener('click', function() {
             if (activeDayDiv) {
-                const index = Array.prototype.indexOf.call(daysContainer.children, activeDayDiv);
-                const offset = Math.max(index - 1, 0);
-                daysContainer.scrollLeft = daysContainer.children[offset].offsetLeft - daysContainer.offsetWidth / 2 + activeDayDiv.offsetWidth / 2;
+                activeDayDiv.classList.remove('active');
+                activeDayDiv.querySelector('.circle').style.background = '#28272C';
+                activeDayDiv.style.color = '#5D5C61';
             }
+
+            this.classList.add('active');
+            this.querySelector('.circle').style.background = 'linear-gradient(#B4B2E2, #9293DF)';
+            this.style.color = 'white';
+            activeDayDiv = this;
+            updateCouplesContent(formattedDate);
         });
+    }
+
+    const monthNames = [
+        "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
+
+    const year = now.getFullYear();
+    const monthName = monthNames[now.getMonth()];
+    const currentDate = `${monthName}, ${year}`;
+
+    document.getElementById("currentDateDiv").innerText = currentDate;
+
+    if (activeDayDiv) {
+        const index = Array.prototype.indexOf.call(daysContainer.children, activeDayDiv);
+        const offset = Math.max(index - 1, 0);
+        daysContainer.scrollLeft = daysContainer.children[offset].offsetLeft - daysContainer.offsetWidth / 2 + activeDayDiv.offsetWidth / 2;
+    }
+
+    function updateCouplesContent(date) {
+        const couplesContainer = document.querySelector(".contour");
+        const coupleDivs = couplesContainer.querySelectorAll(".couple");
+        const schedule = scheduleData[date];
+
+        coupleDivs.forEach((div, index) => {
+            div.textContent = schedule ? schedule[index] || "" : "";
+        });
+    }
+});
