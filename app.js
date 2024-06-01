@@ -87,13 +87,21 @@ document.addEventListener("DOMContentLoaded", function() {
         const coupleDivs = couplesContainer.querySelectorAll(".couple");
         const schedule = scheduleData[date];
 
+        let allEmpty = true;
         coupleDivs.forEach((div, index) => {
             if (schedule && schedule[index]) {
                 div.textContent = schedule[index];
+                allEmpty = false;
             } else {
-                div.textContent = "выходной";
+                div.textContent = "нет пары";
             }
         });
+
+        if (allEmpty) {
+            coupleDivs.forEach((div) => {
+                div.textContent = "выходной";
+            });
+        }
     }
 
     // Ensure the content is updated for the initial active date
