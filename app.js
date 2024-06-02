@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const now = new Date();
             const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
             const daysContainer = document.getElementById("daysContainer");
+            const appealText = document.getElementById("appealText");
 
             const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -40,6 +41,12 @@ document.addEventListener("DOMContentLoaded", function() {
                     circleDiv.style.background = 'linear-gradient(#B4B2E2, #9293DF)';
                     dayDiv.style.color = 'white';
                     activeDayDiv = dayDiv;
+
+                    if (dayName.textContent === "Sun") {
+                        appealText.textContent = "сегодня у вас выходной";
+                    } else {
+                        appealText.textContent = "сегодня у вас четыре пары";
+                    }
                 }
 
                 dayDiv.addEventListener('click', function() {
@@ -73,7 +80,5 @@ document.addEventListener("DOMContentLoaded", function() {
                 daysContainer.scrollLeft = daysContainer.children[offset].offsetLeft - daysContainer.offsetWidth / 2 + activeDayDiv.offsetWidth / 2;
             }
         });
-
-
 
 
