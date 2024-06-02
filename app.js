@@ -11,6 +11,15 @@ usercard.appendChild(h1);
 
 
 document.addEventListener("DOMContentLoaded", function() {
+            const schedule = {
+                "01/06/24": ["Иностранный язык"],
+                "03/06/24": ["Дискретная математика", "Дискретная математика", "Дискретная математика", "Физическая культура"],
+                "04/06/24": ["Дискретная математика", "Дискретная математика", "Дискретная математика", "Дискретная математика", "Иностранный язык"],
+                "05/06/24": ["Дискретная математика", "Дискретная математика", "Дискретная математика", "Физическая культура"],
+                "06/06/24": ["Дискретная математика", "Дискретная математика", "Дискретная математика", "Иностранный язык"],
+                "07/06/24": ["Дискретная математика", "Дискретная математика", "Дискретная математика"]
+            };
+
             const now = new Date();
             const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
             const daysContainer = document.getElementById("daysContainer");
@@ -19,6 +28,53 @@ document.addEventListener("DOMContentLoaded", function() {
             const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
             let activeDayDiv;
+
+            function formatDate(date) {
+                const day = String(date.getDate()).padStart(2, '0');
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const year = String(date.getFullYear()).slice(-2);
+                return `${day}/${month}/${year}`;
+            }
+
+            function updateCouples(dateKey) {
+                const couples = schedule[dateKey] || [];
+                let coupleCount = 0;
+
+                for (let i = 1; i <= 5; i++) {
+                    const coupleDiv = document.getElementById(`couple${i}`);
+                    if (couples[i - 1]) {
+                        coupleDiv.textContent = couples[i - 1];
+                        coupleCount++;
+                    } else {
+                        coupleDiv.textContent = "";
+                    }
+                }
+
+                updateAppealText(coupleCount);
+            }
+
+            function updateAppealText(coupleCount) {
+                switch (coupleCount) {
+                    case 0:
+                        appealText.textContent = "сегодня у вас выходной";
+                        break;
+                    case 1:
+                        appealText.textContent = "сегодня у вас одна пара";
+                        break;
+                    case 2:
+                        appealText.textContent = "сегодня у вас две пары";
+                        break;
+                    case 3:
+                        appealText.textContent = "сегодня у вас три пары";
+                        break;
+                    case 4:
+                        appealText.textContent = "сегодня у вас четыре пары";
+                        break;
+                    case 5:
+                        appealText.textContent = "сегодня у вас пять пар";
+                        break;
+                }
+            }
 
             for (let i = 1; i <= daysInMonth; i++) {
                 const dayDiv = document.createElement("div");
@@ -30,6 +86,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 const dayName = document.createElement("p");
                 const date = new Date(now.getFullYear(), now.getMonth(), i);
+                const dateKey = formatDate(date);
                 dayName.textContent = dayNames[date.getDay()];
 
                 dayDiv.appendChild(circleDiv);
@@ -42,11 +99,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     dayDiv.style.color = 'white';
                     activeDayDiv = dayDiv;
 
-                    if (dayName.textContent === "Sun") {
-                        appealText.textContent = "сегодня у вас выходной";
-                    } else {
-                        appealText.textContent = "сегодня у вас четыре пары";
-                    }
+                    updateCouples(dateKey);
                 }
 
                 dayDiv.addEventListener('click', function() {
@@ -80,5 +133,3 @@ document.addEventListener("DOMContentLoaded", function() {
                 daysContainer.scrollLeft = daysContainer.children[offset].offsetLeft - daysContainer.offsetWidth / 2 + activeDayDiv.offsetWidth / 2;
             }
         });
-
-
