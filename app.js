@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", function() {
             const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
             const daysContainer = document.getElementById("daysContainer");
             const appealText = document.getElementById("appealText");
+            const contour = document.getElementById("contour");
 
             const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
@@ -37,18 +38,41 @@ document.addEventListener("DOMContentLoaded", function() {
             }
 
             function updateCouples(dateKey) {
-                console.log(`Updating couples for date: ${dateKey}`);
                 const couples = schedule[dateKey] || [];
                 let coupleCount = 0;
 
+                contour.innerHTML = '';
+
                 for (let i = 1; i <= 5; i++) {
-                    const coupleDiv = document.getElementById(`couple${i}`);
+                    const c1 = document.createElement('div');
+                    c1.className = 'c1';
+                    const time = document.createElement('p');
+                    time.className = 'time';
+
+                    switch(i) {
+                        case 1: time.textContent = "09:00"; break;
+                        case 2: time.textContent = "10:40"; break;
+                        case 3: time.textContent = "13:20"; break;
+                        case 4: time.textContent = "15:00"; break;
+                        case 5: time.textContent = "16:40"; break;
+                    }
+
+                    const coupleDiv = document.createElement('div');
+                    coupleDiv.className = 'couple';
+                    coupleDiv.id = `couple${i}`;
+
                     if (couples[i - 1]) {
                         coupleDiv.textContent = couples[i - 1];
                         coupleCount++;
-                    } else {
-                        coupleDiv.textContent = "";
                     }
+
+                    c1.appendChild(time);
+                    c1.appendChild(coupleDiv);
+                    contour.appendChild(c1);
+                }
+
+                if (coupleCount === 0) {
+                    contour.innerHTML = '<div class="day-off">ВЫХОДНОЙ</div>';
                 }
             }
 
