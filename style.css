@@ -110,6 +110,8 @@ h1 {
 
 .contour {
     margin: 5%;
+    display: flex;
+    flex-direction: column;
 }
 
 .c1 {
@@ -133,8 +135,18 @@ h1 {
     color: white;
     display: flex;
     text-align: center;
+    padding: 5%;
+}
+
+.day-off {
+    display: flex;
     justify-content: center;
     align-items: center;
+    height: 18vh;
+    border-radius: 25px;
+    background-color: #28272C;
+    color: white;
+    font-size: 2em;
 }
 
 .my-div.active { 
