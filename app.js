@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
 
             function updateCouples(dateKey) {
+                console.log(`Updating couples for date: ${dateKey}`);
                 const couples = schedule[dateKey] || [];
                 let coupleCount = 0;
 
@@ -49,8 +50,6 @@ document.addEventListener("DOMContentLoaded", function() {
                         coupleDiv.textContent = "";
                     }
                 }
-
-                updateAppealText(coupleCount);
             }
 
             function updateAppealText(coupleCount) {
@@ -75,6 +74,12 @@ document.addEventListener("DOMContentLoaded", function() {
                         break;
                 }
             }
+
+            // Initialize the current day's couples and appeal text
+            const todayDateKey = formatDate(now);
+            const todayCouples = schedule[todayDateKey] || [];
+            updateCouples(todayDateKey);
+            updateAppealText(todayCouples.length);
 
             for (let i = 1; i <= daysInMonth; i++) {
                 const dayDiv = document.createElement("div");
@@ -113,6 +118,8 @@ document.addEventListener("DOMContentLoaded", function() {
                     this.querySelector('.circle').style.background = 'linear-gradient(#B4B2E2, #9293DF)';
                     this.style.color = 'white';
                     activeDayDiv = this;
+
+                    updateCouples(dateKey);
                 });
             }
 
