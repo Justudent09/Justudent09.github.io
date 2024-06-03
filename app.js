@@ -28,7 +28,9 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
 
-    const userId = new URLSearchParams(window.location.search).get('tg'); // Get the user ID from the URL
+    const userId = new URLSearchParams(window.location.search).get('tg'); // Получаем ID пользователя из URL
+    console.log('ID пользователя из URL:', userId); // Логирование для отладки
+
     let schedule;
 
     if (userId === "942573399") {
@@ -117,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }
 
-    // Initialize the current day's couples and appeal text
+    // Инициализация пар на текущий день и текста обращения
     const todayDateKey = formatDate(now);
     const todayCouples = schedule[todayDateKey] || [];
     updateCouples(todayDateKey);
