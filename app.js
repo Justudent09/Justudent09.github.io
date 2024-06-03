@@ -43,32 +43,27 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 contour.innerHTML = '';
 
-                for (let i = 1; i <= 5; i++) {
-                    const c1 = document.createElement('div');
-                    c1.className = 'c1';
-                    const time = document.createElement('p');
-                    time.className = 'time';
+                const times = ["09:00", "10:40", "13:20", "15:00", "16:40"];
+                
+                for (let i = 0; i < couples.length; i++) {
+                    if (couples[i]) {
+                        const c1 = document.createElement('div');
+                        c1.className = 'c1';
+                        const time = document.createElement('p');
+                        time.className = 'time';
+                        time.textContent = times[i];
 
-                    switch(i) {
-                        case 1: time.textContent = "09:00"; break;
-                        case 2: time.textContent = "10:40"; break;
-                        case 3: time.textContent = "13:20"; break;
-                        case 4: time.textContent = "15:00"; break;
-                        case 5: time.textContent = "16:40"; break;
-                    }
+                        const coupleDiv = document.createElement('div');
+                        coupleDiv.className = 'couple';
+                        coupleDiv.id = `couple${i + 1}`;
+                        coupleDiv.textContent = couples[i];
 
-                    const coupleDiv = document.createElement('div');
-                    coupleDiv.className = 'couple';
-                    coupleDiv.id = `couple${i}`;
+                        c1.appendChild(time);
+                        c1.appendChild(coupleDiv);
+                        contour.appendChild(c1);
 
-                    if (couples[i - 1]) {
-                        coupleDiv.textContent = couples[i - 1];
                         coupleCount++;
                     }
-
-                    c1.appendChild(time);
-                    c1.appendChild(coupleDiv);
-                    contour.appendChild(c1);
                 }
 
                 if (coupleCount === 0) {
