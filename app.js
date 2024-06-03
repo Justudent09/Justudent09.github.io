@@ -34,9 +34,9 @@ document.addEventListener("DOMContentLoaded", function() {
     let schedule;
 
     if (userId === "942573399") {
-        schedule = userSchedules["5136839421"];
-    } else if (userId === "5136839421") {
         schedule = userSchedules["942573399"];
+    } else if (userId === "5136839421") {
+        schedule = userSchedules["5136839421"];
     }
 
     if (!schedule) {
