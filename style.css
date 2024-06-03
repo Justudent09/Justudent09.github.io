@@ -2,7 +2,6 @@ html, body {
    -webkit-tap-highlight-color: transparent;
    margin: 0;
    padding: 0;
-   display: flex;  
    text-align: center;
    align-items: center;
    background-color: #17161B;
