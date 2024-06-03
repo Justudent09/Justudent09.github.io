@@ -28,19 +28,17 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     };
 
-    const userId = new URLSearchParams(window.location.search).get('tg'); // Получаем ID пользователя из URL
-    console.log('ID пользователя из URL:', userId); // Логирование для отладки
+    const userId = tg.initDataUnsafe.user.id.toString();
+    console.log('ID пользователя из Telegram:', userId); // Логирование для отладки
 
     let schedule;
 
-    if (userId === "942573399") {
-        schedule = userSchedules["942573399"];
-    } else if (userId === "5136839421") {
-        schedule = userSchedules["5136839421"];
+    if (userSchedules.hasOwnProperty(userId)) {
+        schedule = userSchedules[userId];
     }
 
     if (!schedule) {
-        document.body.innerHTML = '<h1 style="color: white">ВЫ НЕ СТУДЕНТ ФИЛИАЛА МГУ В ГРОЗНОМ!!!</h1>';
+        document.body.innerHTML = '<h1 style="color: white; text-align: center;">ВЫ НЕ СТУДЕНТ ФИЛИАЛА МГУ В ГРОЗНОМ</h1>';
         return;
     }
 
