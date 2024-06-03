@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     if (!schedule) {
-        document.body.innerHTML = '<div class="not-student" style="width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; color: white;">ВЫ НЕ СТУДЕНТ ФИЛИАЛА МГУ В ГРОЗНОМ</div>';
+        document.body.innerHTML = '<h1>ВЫ НЕ СТУДЕНТ ФИЛИАЛА МГУ В ГРОЗНОМ</h1>';
         return;
     }
 
