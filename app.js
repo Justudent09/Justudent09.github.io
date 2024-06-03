@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", function() {
     };
 
     const userId = tg.initDataUnsafe.user.id.toString();
-    console.log('ID пользователя из Telegram:', userId); // Логирование для отладки
+    console.log('ID пользователя из Telegram:', userId);
 
     let schedule;
 
@@ -116,7 +116,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 }
             }
 
-            // Initialize the current day's couples and appeal text
             const todayDateKey = formatDate(now);
             const todayCouples = schedule[todayDateKey] || [];
             updateCouples(todayDateKey);
