@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     if (!schedule) {
-        document.body.innerHTML = '<h1 style="color: white">ВЫ НЕ СТУДЕНТ ФИЛИАЛА МГУ В ГРОЗНОМ</h1>';
+        document.body.innerHTML = '<h1 style="color: white">ВЫ НЕ СТУДЕНТ ФИЛИАЛА МГУ В ГРОЗНОМ!!!</h1>';
         return;
     }
 
