@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         },
         {
-            ids: ["5136839421", "1341714742"],
+            ids: ["1341714742"],
             schedule: {
                 "01/06/24": ["Иностранный язык", "Иностранный язык"],
                 "03/06/24": ["Математика для менеджеров", "Математика для менеджеров", "Математика для менеджеров", "Физическая культура"],
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     if (!schedule) {
-        document.body.innerHTML = '<h1 style="color: white; text-align: center;">ВЫ НЕ СТУДЕНТ ФИЛИАЛА МГУ В ГРОЗНОМ</h1>';
+        document.body.innerHTML = '<div style="display: flex; text-align: center; align-items: center; height: 100%;"><h1 style="color: white;">ВЫ НЕ СТУДЕНТ ФИЛИАЛА МГУ В ГРОЗНОМ</h1></div>';
         return;
     }
 
