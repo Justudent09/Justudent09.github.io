@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     if (!schedule) {
-        document.body.innerHTML = '<div style="display: flex; text-align: center; align-items: center; height: 100%;"><h1 style="color: white;">ВЫ НЕ СТУДЕНТ ФИЛИАЛА МГУ В ГРОЗНОМ</h1></div>';
+        document.body.innerHTML = '<div style="background-color: #28272C; display: flex; text-align: center; align-items: center; height: 100%;"><h1 style="color: white;">ВЫ НЕ СТУДЕНТ ФИЛИАЛА МГУ В ГРОЗНОМ</h1></div>';
         return;
     }
 
