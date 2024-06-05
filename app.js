@@ -57,13 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     if (!schedule) {
-        document.body.innerHTML = '<div id="centeredText"><div style="
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: #28272C;
-    border-radius: 25px;"><h1 style="color: white;">ВЫ НЕ СТУДЕНТ ФИЛИАЛА МГУ В ГРОЗНОМ</h1></div></div>';
+        document.body.innerHTML = '<div id="centeredText"><h1 style="color: white;">ВЫ НЕ СТУДЕНТ ФИЛИАЛА МГУ В ГРОЗНОМ</h1></div>';
         return;
     }
 
