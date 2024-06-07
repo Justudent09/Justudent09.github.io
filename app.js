@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     if (!schedule) {
-        document.body.innerHTML = '<div id="centeredText"><h1 style="color: white;">ВЫ НЕ СТУДЕНТ ФИЛИАЛА МГУ В ГРОЗНОМ</h1></div>';
+        document.body.innerHTML = '<div id="centeredText"><h1 style="color: white;">ИЗВИНИТЕ,ДОСТУП К ДАННОМУ БОТУ ОГРАНИЧЕН</h1></div>';
         return;
     }
 
