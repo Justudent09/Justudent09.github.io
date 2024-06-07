@@ -8,18 +8,6 @@ h1.innerText = `${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.la
 
 usercard.appendChild(h1);
 
-// Create an img element for the profile picture
-let profilePic = document.createElement("img");
-profilePic.src = tg.initDataUnsafe.user.photo_url;
-profilePic.style.width = "100px"; // Adjust the size as needed
-profilePic.style.height = "100px";
-profilePic.style.borderRadius = "50%";
-
-// Append the profile picture to the div with class "icon-profile"
-let iconProfileDiv = document.querySelector(".icon-profile");
-iconProfileDiv.appendChild(profilePic);
-
-
 document.addEventListener("DOMContentLoaded", function() {
     const schedules = [
         {
