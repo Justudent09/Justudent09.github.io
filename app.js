@@ -11,11 +11,12 @@ usercard.appendChild(h1);
 document.addEventListener("DOMContentLoaded", function() {
     const schedules = [
         {
-            ids: ["5136839421", "942573399"],
+            ids: [],
             schedule: {
                 "01/06/24": [
                     { subject: "Иностранный язык", room: "А1" },
                     { subject: "Иностранный язык", room: "А1" },
+                    { subject: "Менеджмент", room: "ауд." }
                 ],
                 "03/06/24": [
                     { subject: "Математика для менеджеров", room: "А1" },
@@ -46,7 +47,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         },
         {
-            ids: [],
+            ids: ["5136839421", "942573399", "887422835"],
             schedule: {
                 // Данные для других пользователей
             }
@@ -112,9 +113,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 roomDiv.className = 'room';
                 roomDiv.textContent = couples[i].room || '';
                 roomDiv.style.position = 'absolute';
-                roomDiv.style.bottom = '5%';
-                roomDiv.style.right = '5%';
-                roomDiv.style.fontSize = '2em';
+                roomDiv.style.bottom = '3%';
+                roomDiv.style.right = '3%';
+                roomDiv.style.fontSize = '200%'; // Увеличиваем размер текста в два раза
 
                 coupleDiv.appendChild(roomDiv);
                 c1.appendChild(time);
