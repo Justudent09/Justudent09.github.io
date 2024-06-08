@@ -16,7 +16,6 @@ document.addEventListener("DOMContentLoaded", function() {
                 "01/06/24": [
                     { subject: "Иностранный язык", room: "А1" },
                     { subject: "Иностранный язык", room: "А1" },
-                    { subject: "Менеджмент", room: "ауд." }
                 ],
                 "03/06/24": [
                     { subject: "Математика для менеджеров", room: "А1" },
