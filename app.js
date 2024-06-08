@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function() {
         {
             ids: [],
             schedule: {
-                // Данные для других пользователей
+                
             }
         }
     ];
@@ -112,9 +112,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 roomDiv.className = 'room';
                 roomDiv.textContent = couples[i].room || '';
                 roomDiv.style.position = 'absolute';
-                roomDiv.style.bottom = '3%';
-                roomDiv.style.right = '3%';
-                roomDiv.style.fontSize = '150%'; // Увеличиваем размер текста в два раза
+                roomDiv.style.bottom = '5%';
+                roomDiv.style.right = '5%';
+                roomDiv.style.fontSize = '150%';
 
                 coupleDiv.appendChild(roomDiv);
                 c1.appendChild(time);
