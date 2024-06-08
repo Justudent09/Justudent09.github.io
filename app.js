@@ -112,8 +112,9 @@ document.addEventListener("DOMContentLoaded", function() {
                 roomDiv.className = 'room';
                 roomDiv.textContent = couples[i].room || '';
                 roomDiv.style.position = 'absolute';
-                roomDiv.style.bottom = '7%';
+                roomDiv.style.bottom = '5%';
                 roomDiv.style.right = '5%';
+                roomDiv.style.font-size = '2em';
 
                 coupleDiv.appendChild(roomDiv);
                 c1.appendChild(time);
