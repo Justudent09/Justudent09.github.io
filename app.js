@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 roomDiv.style.position = 'absolute';
                 roomDiv.style.bottom = '5%';
                 roomDiv.style.right = '5%';
-                roomDiv.style.font-size = '2em';
+                roomDiv.style.fontSize = '2em';
 
                 coupleDiv.appendChild(roomDiv);
                 c1.appendChild(time);
