@@ -11,12 +11,11 @@ usercard.appendChild(h1);
 document.addEventListener("DOMContentLoaded", function() {
     const schedules = [
         {
-            ids: [],
+            ids: ["5136839421", "942573399"],
             schedule: {
                 "01/06/24": [
                     { subject: "Иностранный язык", room: "А1" },
                     { subject: "Иностранный язык", room: "А1" },
-                    { subject: "Менеджмент", room: "ауд." }
                 ],
                 "03/06/24": [
                     { subject: "Математика для менеджеров", room: "А1" },
@@ -47,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         },
         {
-            ids: ["5136839421", "942573399", "887422835"],
+            ids: [],
             schedule: {
                 // Данные для других пользователей
             }
