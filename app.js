@@ -114,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 roomDiv.style.position = 'absolute';
                 roomDiv.style.bottom = '3%';
                 roomDiv.style.right = '3%';
-                roomDiv.style.fontSize = '200%'; // Увеличиваем размер текста в два раза
+                roomDiv.style.fontSize = '150%'; // Увеличиваем размер текста в два раза
 
                 coupleDiv.appendChild(roomDiv);
                 c1.appendChild(time);
