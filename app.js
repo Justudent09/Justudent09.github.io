@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
             ids: ["5136839421", "942573399"],
             schedule: {
                 "01/06/24": [
-                    { subject: "Иностранный язык Иностранный язык", room: "А1" },
+                    { subject: "Иностранный язык", room: "А1" },
                     { subject: "Иностранный язык", room: "А1" },
                 ],
                 "03/06/24": [
