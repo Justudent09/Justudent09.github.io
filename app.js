@@ -224,12 +224,14 @@ document.addEventListener("DOMContentLoaded", function() {
     notificationsDiv.addEventListener('click', function(event) {
         notificationsPanel.classList.toggle('show');
         overlay.classList.toggle('show');
+        document.body.classList.toggle('no-scroll');
         event.stopPropagation();
     });
 
     overlay.addEventListener('click', function() {
         notificationsPanel.classList.remove('show');
         overlay.classList.remove('show');
+        document.body.classList.remove('no-scroll');
     });
 
     notificationsPanel.addEventListener('click', function(event) {
