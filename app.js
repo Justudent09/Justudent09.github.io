@@ -66,7 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     if (!schedule) {
-        document.body.innerHTML = '<div id="centeredText"><h1 style="color: white; font-size: 1em;">ИЗВИНИТЕ, ДОСТУП К ДАННОМУ БОТУ ОГРАНИЧЕН</h1></div>';
+        document.body.innerHTML = '<div id="centeredText"><h1 style="color: white; font-size: 2em;">ИЗВИНИТЕ, ДОСТУП К ДАННОМУ БОТУ ОГРАНИЧЕН</h1></div>';
         return;
     }
 
