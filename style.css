@@ -222,3 +222,7 @@ h1 {
 .notifications-panel.show {
     bottom: 0;
 }
+
+body.no-scroll {
+    overflow: hidden;
+}
