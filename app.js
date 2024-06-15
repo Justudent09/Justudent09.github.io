@@ -209,7 +209,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const monthName = monthNames[now.getMonth()];
     const currentDate = `${monthName}, ${year}`;
 
-    document.getElementById("currentDateDiv").innerText = currentDate;
+       document.getElementById("currentDateDiv").innerText = currentDate;
 
     if (activeDayDiv) {
         const index = Array.prototype.indexOf.call(daysContainer.children, activeDayDiv);
@@ -219,13 +219,20 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const notificationsDiv = document.querySelector('.notifications');
     const notificationsPanel = document.getElementById('notificationsPanel');
-    const closeBtn = document.getElementById('closeBtn');
+    const overlay = document.getElementById('overlay');
 
-    notificationsDiv.addEventListener('click', function() {
+    notificationsDiv.addEventListener('click', function(event) {
         notificationsPanel.classList.toggle('show');
+        overlay.classList.toggle('show');
+        event.stopPropagation();
     });
 
-    closeBtn.addEventListener('click', function() {
+    overlay.addEventListener('click', function() {
         notificationsPanel.classList.remove('show');
+        overlay.classList.remove('show');
+    });
+
+    notificationsPanel.addEventListener('click', function(event) {
+        event.stopPropagation();
     });
 });
