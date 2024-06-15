@@ -216,4 +216,16 @@ document.addEventListener("DOMContentLoaded", function() {
         const offset = Math.max(index - 1, 0);
         daysContainer.scrollLeft = daysContainer.children[offset].offsetLeft - daysContainer.offsetWidth / 2 + activeDayDiv.offsetWidth / 2;
     }
+
+    const notificationsDiv = document.querySelector('.notifications');
+    const notificationsPanel = document.getElementById('notificationsPanel');
+    const closeBtn = document.getElementById('closeBtn');
+
+    notificationsDiv.addEventListener('click', function() {
+        notificationsPanel.classList.toggle('show');
+    });
+
+    closeBtn.addEventListener('click', function() {
+        notificationsPanel.classList.remove('show');
+    });
 });
