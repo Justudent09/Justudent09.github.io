@@ -121,7 +121,7 @@ h1 {
 }
 
 .c1 {
-    height: 18vh;
+    height: 35vw;
     display: flex;
     margin-top: 4%;
     position: relative;
@@ -133,7 +133,7 @@ h1 {
 
 .couple {
     width: 70vw;
-    height: 18vh;
+    height: 35vw;
     border-radius: 25px;
     background-color: #28272C;
     position: absolute;
@@ -148,7 +148,7 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 18vh;
+    height: 35vw;
     border-radius: 25px;
     background-color: #28272C;
     color: white;
