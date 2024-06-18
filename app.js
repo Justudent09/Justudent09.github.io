@@ -172,13 +172,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 localStorage.setItem('course', course);
                 localStorage.setItem('direction', direction);
                 // Анимация скрытия формы
-                document.getElementById('formContainer').style.transition = 'transform 0.5s ease-out';
-                document.getElementById('formContainer').style.transform = 'translateX(-100%)';
+                document.getElementById('formContainer').classList.add('slide-out-left');
                 setTimeout(() => {
                     document.getElementById('formContainer').classList.add('hidden');
                     document.getElementById('mainContent').classList.remove('hidden');
                     showSchedule(schedule);
-                }, 500);
+                }, 500); // время анимации совпадает с CSS анимацией
             } else {
                 alert('Нет расписания для выбранного курса и направления.');
             }
@@ -356,5 +355,22 @@ document.addEventListener("DOMContentLoaded", function() {
 
     notificationsPanel.addEventListener('click', function(event) {
         event.stopPropagation();
+    });
+
+    // Показать кнопку удаления при нажатии на иконку профиля
+    const profileIcon = document.querySelector('.icon-profile');
+    const deleteButton = document.createElement('button');
+    deleteButton.textContent = 'Удалить все данные';
+    deleteButton.style.display = 'none';
+    deleteButton.addEventListener('click', function() {
+        localStorage.clear();
+        alert('Все данные удалены. Пожалуйста, обновите страницу.');
+        location.reload(); // Перезагрузить страницу после удаления данных
+    });
+
+    document.body.appendChild(deleteButton);
+
+    profileIcon.addEventListener('click', function() {
+        deleteButton.style.display = 'block'; // Показать кнопку при нажатии на иконку профиля
     });
 });
