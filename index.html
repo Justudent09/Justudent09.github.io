@@ -3,63 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>BotTT</title>
-    
+    <title>Выбор курса</title>
+    <style>
+        /* Стили для скрытия элементов */
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-    <div id="formContainer" class="full-screen-form">
-        <form id="userForm" class="form-container">
-            <label for="course">Выберите курс:</label>
-            <select id="course" name="course" required>
-                <option value="1">Курс 1</option>
-                <option value="2">Курс 2</option>
-            </select><br>
-            <label for="direction">Выберите направление:</label>
-            <select id="direction" name="direction" required>
-                <option value="management">Менеджмент</option>
-                <option value="pmi">ПМИ</option>
-                <option value="jurisprudence">Юриспруденция</option>
-            </select><br>
-            <label for="password">Введите пароль:</label>
-            <input type="password" id="password" name="password" required><br>
-            <button type="submit">Отправить</button>
-        </form>
-    </div>
-    
-    <div class="container1 hidden" id="mainContent">
-        <div class="timetable">
-            <div class="profile">
-                <div class="status">
-                    <div class="icon-profile"></div>
-                    <div class="months" id="currentDateDiv"></div>
-                    <div class="notifications">
-                        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 48 48" style="fill:#FFFFFF;">
-                            <path d="M38.498 36H9.502c-1.205 0-2.31-.607-2.955-1.625S5.822 32.1 6.335 31.01L9 25.648v-6.267c0-8.239 6.271-14.987 14.277-15.364l0 0c4.151-.188 8.08 1.271 11.075 4.128C37.35 11.004 39 14.859 39 19v6.648l2.65 5.333c.527 1.119.448 2.377-.197 3.395S39.703 36 38.498 36zM23.348 5.516h.01H23.348zM18.09 38c.478 2.833 2.942 5 5.91 5s5.431-2.167 5.91-5H18.09z"></path>
-                        </svg>
-                    </div>
-                </div>
-                <div class="appeal">
-                    <div class="usercard" id="usercard" style="color: white"></div>
-                    <h1 id="appealText" style="color: #5D5C61"></h1>
-                </div>
-            </div>
-            <div class="horizontal-scroll" id="daysContainer"></div>
-            <div class="couples">
-                <div class="contour" id="contour"></div>
-            </div>
-        </div>
-    </div>
-    <div class="overlay" id="overlay"></div>
-    <div class="notifications-panel" id="notificationsPanel">
-        <div class="notifications-content">
-            <div class="notifications-header">
-                <h2>Notifications</h2>
-            </div>
-        </div>
-    </div>
+    <form id="userForm">
+        <label for="course">Выберите курс:</label>
+        <select id="course" name="course" required>
+            <option value="1">Курс 1</option>
+            <option value="2">Курс 2</option>
+        </select><br>
 
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script src="app.js"></script>
+        <label for="direction">Выберите направление:</label>
+        <select id="direction" name="direction" required>
+            <option value="management">Менеджмент</option>
+            <option value="pmi">ПМИ</option>
+            <option value="jurisprudence">Юриспруденция</option>
+        </select><br>
+
+        <label for="password">Введите пароль:</label>
+        <input type="password" id="password" name="password" required><br>
+
+        <button type="submit">Отправить</button>
+    </form>
+
+    <div id="schedule"></div>
+    <button id="deleteButton" class="hidden">Удалить данные</button>
+
+    <script>
+        // Функция для проверки, сохранены ли данные пользователя
+        function checkUserData() {
+            const userId = localStorage.getItem('userId');
+            if (userId) {
+                const userCourse = localStorage.getItem('course');
+                const userDirection = localStorage.getItem('direction');
+                showSchedule(userCourse, userDirection);
+                // Скрываем форму и показываем кнопку удаления, если данные уже сохранены
+                document.getElementById('userForm').classList.add('hidden');
+                document.getElementById('deleteButton').classList.remove('hidden');
+            }
+        }
+
+        // Функция для отображения расписания
+        function showSchedule(course, direction) {
+            const scheduleDiv = document.getElementById('schedule');
+            scheduleDiv.innerHTML = `<h2>Расписание для курса ${course} и направления ${direction}</h2>`;
+            // Здесь можно добавить логику для отображения реального расписания
+        }
+
+        // Обработчик отправки формы пользователя
+        document.getElementById('userForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const course = document.getElementById('course').value;
+            const direction = document.getElementById('direction').value;
+            const password = document.getElementById('password').value;
+
+            // Проверка пароля
+            if (password === '12345678') {
+                const userId = 'user-telegram-id'; // Замените на реальный ID пользователя Telegram
+                saveUserId(userId, course, direction);
+                showSchedule(course, direction);
+                // Скрываем форму и показываем кнопку удаления после ввода данных
+                document.getElementById('userForm').classList.add('hidden');
+                document.getElementById('deleteButton').classList.remove('hidden');
+            } else {
+                alert('Неверный пароль');
+            }
+        });
+
+        // Функция для сохранения ID пользователя
+        function saveUserId(userId, course, direction) {
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = { id: userId, course: course, direction: direction };
+            users.push(user);
+            localStorage.setItem('users', JSON.stringify(users));
+            localStorage.setItem('userId', userId);
+            localStorage.setItem('course', course);
+            localStorage.setItem('direction', direction);
+        }
+
+        // Обработчик удаления данных
+        document.getElementById('deleteButton').addEventListener('click', function() {
+            const userId = localStorage.getItem('userId');
+            deleteUserId(userId);
+            alert('Данные удалены. Пожалуйста, обновите страницу.');
+            document.getElementById('userForm').classList.remove('hidden');
+            document.getElementById('deleteButton').classList.add('hidden');
+            document.getElementById('schedule').innerHTML = '';
+        });
+
+        // Функция для удаления ID пользователя
+        function deleteUserId(userId) {
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            users = users.filter(user => user.id !== userId);
+            localStorage.setItem('users', JSON.stringify(users));
+            localStorage.removeItem('userId');
+            localStorage.removeItem('course');
+            localStorage.removeItem('direction');
+        }
+
+        // Проверка данных пользователя при загрузке страницы
+        window.onload = function() {
+            checkUserData();
+        }
+    </script>
 </body>
 </html>
