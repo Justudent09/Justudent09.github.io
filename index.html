@@ -89,7 +89,7 @@
 
         // Функция для сохранения ID пользователя
         function saveUserId(userId, course, direction) {
-            const users = JSON.parse(localStorage.getItem('users')) || [];
+            let users = JSON.parse(localStorage.getItem('users')) || [];
             const user = { id: userId, course: course, direction: direction };
             users.push(user);
             localStorage.setItem('users', JSON.stringify(users));
@@ -104,7 +104,7 @@
             const adminPassword = document.getElementById('adminPassword').value;
 
             // Проверка админ-пароля
-            if (adminPassword === '1111') { // Замените на реальный админ-пароль
+            if (adminPassword === 'admin-password') { // Замените на реальный админ-пароль
                 document.getElementById('adminForm').classList.add('hidden');
                 document.getElementById('adminPanel').classList.remove('hidden');
             } else {
