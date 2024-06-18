@@ -134,24 +134,25 @@ document.addEventListener("DOMContentLoaded", function() {
     let schedule;
 
     const storedCourse = localStorage.getItem('course');
-    const storedDirection = localStorage.getItem('direction');
+const storedDirection = localStorage.getItem('direction');
+const storedUserId = localStorage.getItem('userId'); // Получаем сохраненный userId
 
-    if (storedCourse && storedDirection) {
-        console.log(`Stored course: ${storedCourse}, direction: ${storedDirection}`);
-        for (const sched of schedules) {
-            if (sched.course === storedCourse && sched.direction === storedDirection) {
-                schedule = sched.schedule;
-                break;
-            }
+if (storedCourse && storedDirection && storedUserId === userId) { // Сравниваем сохраненный userId с текущим
+    console.log(`Stored course: ${storedCourse}, direction: ${storedDirection}`);
+    for (const sched of schedules) {
+        if (sched.course === storedCourse && sched.direction === storedDirection) {
+            schedule = sched.schedule;
+            break;
         }
-        if (schedule) {
-            document.getElementById('formContainer').classList.add('hidden');
-            document.getElementById('mainContent').classList.remove('hidden');
-            showSchedule(schedule);
-        }
-    } else {
-        document.getElementById('formContainer').classList.remove('hidden');
     }
+    if (schedule) {
+        document.getElementById('formContainer').classList.add('hidden');
+        document.getElementById('mainContent').classList.remove('hidden');
+        showSchedule(schedule);
+    }
+} else {
+    document.getElementById('formContainer').classList.remove('hidden');
+}
 
     document.getElementById('userForm').addEventListener('submit', function(e) {
         e.preventDefault();
@@ -162,31 +163,32 @@ document.addEventListener("DOMContentLoaded", function() {
         console.log(`Введенные данные - Курс: ${course}, Направление: ${direction}, Пароль: ${password}`);
 
         if (password === '12345678') {
-            for (const sched of schedules) {
-                if (sched.course === course && sched.direction === direction) {
-                    schedule = sched.schedule;
-                    break;
-                }
-            }
-
-            if (schedule) {
-                localStorage.setItem('course', course);
-                localStorage.setItem('direction', direction);
-                // Анимация скрытия формы
-                document.getElementById('formContainer').style.transition = 'transform 0.5s ease-out';
-                document.getElementById('formContainer').style.transform = 'translateX(-100%)';
-                setTimeout(() => {
-                    document.getElementById('formContainer').classList.add('hidden');
-                    document.getElementById('mainContent').classList.remove('hidden');
-                    showSchedule(schedule);
-                }, 500);
-            } else {
-                alert('Нет расписания для выбранного курса и направления.');
-            }
-        } else {
-            alert('Неверный пароль');
+    for (const sched of schedules) {
+        if (sched.course === course && sched.direction === direction) {
+            schedule = sched.schedule;
+            break;
         }
-    });
+    }
+
+    if (schedule) {
+        localStorage.setItem('course', course);
+        localStorage.setItem('direction', direction);
+        localStorage.setItem('userId', userId); // Сохраняем userId
+
+        // Анимация скрытия формы
+        document.getElementById('formContainer').style.transition = 'transform 0.5s ease-out';
+        document.getElementById('formContainer').style.transform = 'translateX(-100%)';
+        setTimeout(() => {
+            document.getElementById('formContainer').classList.add('hidden');
+            document.getElementById('mainContent').classList.remove('hidden');
+            showSchedule(schedule);
+        }, 500);
+    } else {
+        alert('Нет расписания для выбранного курса и направления.');
+    }
+} else {
+    alert('Неверный пароль');
+}
 
     function showSchedule(schedule) {
         const now = new Date();
