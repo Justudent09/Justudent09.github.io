@@ -141,7 +141,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 showSchedule(userCourse, userDirection);
                 // Скрываем форму и показываем кнопку удаления, если данные уже сохранены
                 document.getElementById('userForm').classList.add('hidden');
-                document.getElementById('deleteButton').classList.remove('hidden');
+                
             }
         }
 
