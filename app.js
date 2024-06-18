@@ -272,11 +272,13 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
 
-        const todayDateKey = formatDate(now);
-        const todayCouples = schedule[todayDateKey] || [];
-        updateCouples(todayDateKey);
+        
+    const todayDateKey = formatDate(now);
+    const todayCouples = schedule[todayDateKey] || [];
+    updateCouples(todayDateKey);
+    updateAppealText(todayCouples.length);
 
-        updateAppealText(todayCouples.length); // Обновить текст только один раз для сегодняшнего дня
+        
 
         for (let i = 1; i <= daysInMonth; i++) {
             const dayDiv = document.createElement("div");
