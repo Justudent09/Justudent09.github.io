@@ -251,31 +251,32 @@ document.addEventListener("DOMContentLoaded", function() {
         }
 
         function updateAppealText(coupleCount) {
-            switch (coupleCount) {
-                case 0:
-                    appealText.textContent = "сегодня у вас выходной";
-                    break;
-                case 1:
-                    appealText.textContent = "сегодня у вас одна пара";
-                    break;
-                case 2:
-                    appealText.textContent = "сегодня у вас две пары";
-                    break;
-                case 3:
-                    appealText.textContent = "сегодня у вас три пары";
-                    break;
-                case 4:
-                    appealText.textContent = "сегодня у вас четыре пары";
-                    break;
-                case 5:
-                    appealText.textContent = "сегодня у вас пять пар";
-                    break;
-            }
+        switch (coupleCount) {
+            case 0:
+                appealText.textContent = "сегодня у вас выходной";
+                break;
+            case 1:
+                appealText.textContent = "сегодня у вас одна пара";
+                break;
+            case 2:
+                appealText.textContent = "сегодня у вас две пары";
+                break;
+            case 3:
+                appealText.textContent = "сегодня у вас три пары";
+                break;
+            case 4:
+                appealText.textContent = "сегодня у вас четыре пары";
+                break;
+            case 5:
+                appealText.textContent = "сегодня у вас пять пар";
+                break;
         }
+    }
 
-        const todayDateKey = formatDate(now);
-        const todayCouples = schedule[todayDateKey] || [];
-        updateCouples(todayDateKey);
+    const todayDateKey = formatDate(now);
+    const todayCouples = schedule[todayDateKey] || [];
+    updateCouples(todayDateKey);
+    updateAppealText(todayCouples.length);
 
         for (let i = 1; i <= daysInMonth; i++) {
         const dayDiv = document.createElement("div");
