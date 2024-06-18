@@ -187,70 +187,67 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    function showSchedule(schedule) {
-        const now = new Date();
-        const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
-        const daysContainer = document.getElementById("daysContainer");
-        const appealText = document.getElementById("appealText");
-        const contour = document.getElementById("contour");
+    const now = new Date();
+    const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+    const daysContainer = document.getElementById("daysContainer");
+    const appealText = document.getElementById("appealText");
+    const contour = document.getElementById("contour");
 
-        const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+    const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-        let activeDayDiv;
+    let activeDayDiv;
 
-        function formatDate(date) {
-            const day = String(date.getDate()).padStart(2, '0');
-            const month = String(date.getMonth() + 1).padStart(2, '0');
-            const year = String(date.getFullYear()).slice(-2);
-            return `${day}/${month}/${year}`;
+    function formatDate(date) {
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const year = String(date.getFullYear()).slice(-2);
+        return `${day}/${month}/${year}`;
+    }
+
+    function updateCouples(dateKey) {
+        const couples = schedule[dateKey] || [];
+        let coupleCount = 0;
+
+        contour.innerHTML = '';
+
+        const times = ["09:00", "10:40", "13:20", "15:00", "16:40"];
+
+        for (let i = 0; i < couples.length; i++) {
+            if (couples[i]) {
+                const c1 = document.createElement('div');
+                c1.className = 'c1';
+                const time = document.createElement('p');
+                time.className = 'time';
+                time.textContent = times[i];
+
+                const coupleDiv = document.createElement('div');
+                coupleDiv.className = 'couple';
+                coupleDiv.id = `couple${i + 1}`;
+                coupleDiv.textContent = couples[i].subject;
+
+                const roomDiv = document.createElement('div');
+                roomDiv.className = 'room';
+                roomDiv.textContent = couples[i].room || '';
+                roomDiv.style.position = 'absolute';
+                roomDiv.style.bottom = '5%';
+                roomDiv.style.right = '5%';
+                roomDiv.style.fontSize = '150%';
+
+                coupleDiv.appendChild(roomDiv);
+                c1.appendChild(time);
+                c1.appendChild(coupleDiv);
+                contour.appendChild(c1);
+
+                coupleCount++;
+            }
         }
 
-        function updateCouples(dateKey) {
-            const couples = schedule[dateKey] || [];
-            let coupleCount = 0;
-
-            contour.innerHTML = '';
-
-            const times = ["09:00", "10:40", "13:20", "15:00", "16:40"];
-
-            for (let i = 0; i < couples.length; i++) {
-                if (couples[i]) {
-                    const c1 = document.createElement('div');
-                    c1.className = 'c1';
-                    const time = document.createElement('p');
-                    time.className = 'time';
-                    time.textContent = times[i];
-
-                    const coupleDiv = document.createElement('div');
-                    coupleDiv.className = 'couple';
-                    coupleDiv.id = `couple${i + 1}`;
-                    coupleDiv.textContent = couples[i].subject;
-
-                    const roomDiv = document.createElement('div');
-                    roomDiv.className = 'room';
-                    roomDiv.textContent = couples[i].room || '';
-                    roomDiv.style.position = 'absolute';
-                    roomDiv.style.bottom = '5%';
-                    roomDiv.style.right = '5%';
-                    roomDiv.style.fontSize = '150%';
-
-                    coupleDiv.appendChild(roomDiv);
-                    c1.appendChild(time);
-                    c1.appendChild(coupleDiv);
-                    contour.appendChild(c1);
-
-                    coupleCount++;
-                }
-            }
-
-            if (coupleCount === 0) {
-                contour.innerHTML = '<div class="day-off">ВЫХОДНОЙ</div>';
-            }
-
-            updateAppealText(coupleCount);
+        if (coupleCount === 0) {
+            contour.innerHTML = '<div class="day-off">ВЫХОДНОЙ</div>';
         }
+    }
 
-        function updateAppealText(coupleCount) {
+    function updateAppealText(coupleCount) {
         switch (coupleCount) {
             case 0:
                 appealText.textContent = "сегодня у вас выходной";
@@ -278,7 +275,7 @@ document.addEventListener("DOMContentLoaded", function() {
     updateCouples(todayDateKey);
     updateAppealText(todayCouples.length);
 
-        for (let i = 1; i <= daysInMonth; i++) {
+    for (let i = 1; i <= daysInMonth; i++) {
         const dayDiv = document.createElement("div");
         dayDiv.classList.add("my-div");
 
@@ -320,22 +317,21 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
 
-        const monthNames = [
-            "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-        ];
+    const monthNames = [
+        "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+        "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
 
-        const year = now.getFullYear();
-        const monthName = monthNames[now.getMonth()];
-        const currentDate = `${monthName}, ${year}`;
+    const year = now.getFullYear();
+    const monthName = monthNames[now.getMonth()];
+    const currentDate = `${monthName}, ${year}`;
 
-        document.getElementById("currentDateDiv").innerText = currentDate;
+       document.getElementById("currentDateDiv").innerText = currentDate;
 
-        if (activeDayDiv) {
-            const index = Array.prototype.indexOf.call(daysContainer.children, activeDayDiv);
-            const offset = Math.max(index - 1, 0);
-            daysContainer.scrollLeft = daysContainer.children[offset].offsetLeft - daysContainer.offsetWidth / 2 + activeDayDiv.offsetWidth / 2;
-        }
+    if (activeDayDiv) {
+        const index = Array.prototype.indexOf.call(daysContainer.children, activeDayDiv);
+        const offset = Math.max(index - 1, 0);
+        daysContainer.scrollLeft = daysContainer.children[offset].offsetLeft - daysContainer.offsetWidth / 2 + activeDayDiv.offsetWidth / 2;
     }
 
     const notificationsDiv = document.querySelector('.notifications');
