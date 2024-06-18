@@ -34,20 +34,6 @@
 
     <div id="schedule"></div>
 
-    <!-- Админ-интерфейс -->
-    <form id="adminForm" class="hidden">
-        <h2>Админ-интерфейс</h2>
-        <label for="adminPassword">Введите админ-пароль:</label>
-        <input type="password" id="adminPassword" name="adminPassword" required><br>
-        <button type="submit">Войти</button>
-    </form>
-    <div id="adminPanel" class="hidden">
-        <button id="showIdsButton">Показать все сохранённые ID</button>
-        <div id="allIds" class="hidden"></div>
-        <button id="deleteSpecificButton" class="hidden">Удалить конкретный ID</button>
-        <input type="text" id="deleteSpecificInput" class="hidden" placeholder="Введите ID для удаления">
-    </div>
-
     <script>
         // Функция для проверки, сохранены ли данные пользователя
         function checkUserData() {
@@ -98,60 +84,9 @@
             localStorage.setItem('direction', direction);
         }
 
-        // Обработчик формы админа
-        document.getElementById('adminForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const adminPassword = document.getElementById('adminPassword').value;
-
-            // Проверка админ-пароля
-            if (adminPassword === 'admin-password') { // Замените на реальный админ-пароль
-                document.getElementById('adminForm').classList.add('hidden');
-                document.getElementById('adminPanel').classList.remove('hidden');
-            } else {
-                alert('Неверный админ-пароль');
-            }
-        });
-
-        // Админ-интерфейс: Показать все сохранённые ID
-        document.getElementById('showIdsButton').addEventListener('click', function() {
-            const users = JSON.parse(localStorage.getItem('users')) || [];
-            const allIdsDiv = document.getElementById('allIds');
-            if (users.length > 0) {
-                allIdsDiv.innerHTML = '<ul>' + users.map(user => `<li>ID: ${user.id}, Курс: ${user.course}, Направление: ${user.direction}</li>`).join('') + '</ul>';
-                allIdsDiv.classList.remove('hidden');
-                document.getElementById('deleteSpecificButton').classList.remove('hidden');
-                document.getElementById('deleteSpecificInput').classList.remove('hidden');
-            } else {
-                allIdsDiv.innerHTML = 'Нет сохранённых ID';
-                allIdsDiv.classList.remove('hidden');
-            }
-        });
-
-        // Админ-интерфейс: Удалить конкретный ID
-        document.getElementById('deleteSpecificButton').addEventListener('click', function() {
-            const deleteId = document.getElementById('deleteSpecificInput').value;
-            if (deleteId) {
-                deleteUserId(deleteId);
-                alert(`ID ${deleteId} удалён.`);
-                document.getElementById('deleteSpecificInput').value = '';
-                document.getElementById('allIds').classList.add('hidden');
-            } else {
-                alert('Введите ID для удаления');
-            }
-        });
-
-        // Функция для удаления ID пользователя
-        function deleteUserId(userId) {
-            let users = JSON.parse(localStorage.getItem('users')) || [];
-            users = users.filter(user => user.id !== userId);
-            localStorage.setItem('users', JSON.stringify(users));
-        }
-
         // Проверка данных пользователя при загрузке страницы
         window.onload = function() {
             checkUserData();
-            // Показать админ-форму
-            document.getElementById('adminForm').classList.remove('hidden');
         }
     </script>
 </body>
