@@ -187,6 +187,8 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
+
+    function showSchedule(schedule) {
     const now = new Date();
     const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
     const daysContainer = document.getElementById("daysContainer");
@@ -354,4 +356,5 @@ document.addEventListener("DOMContentLoaded", function() {
     notificationsPanel.addEventListener('click', function(event) {
         event.stopPropagation();
     });
+}
 });
