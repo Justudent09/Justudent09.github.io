@@ -10,122 +10,7 @@ usercard.appendChild(h1);
 
 document.addEventListener("DOMContentLoaded", function() {
     const schedules = [
-                {
-            course: "1",
-            direction: "management",
-            schedule: {
-                "01/06/24": [
-                    { subject: "Иностранный язык", room: "А1" },
-                    { subject: "Иностранный язык", room: "А1" },
-                ],
-                "03/06/24": [
-                    { subject: "Математика для менеджеров", room: "А1" },
-                    { subject: "Математика для менеджеров", room: "А1" },
-                    { subject: "Математика для менеджеров", room: "А1" },
-                    { subject: "Физическая культура" }
-                ],
-                "04/06/24": [
-                    { subject: "Математика для менеджеров", room: "А1" },
-                    { subject: "Математика для менеджеров", room: "А1" },
-                    { subject: "Математика для менеджеров", room: "А1" },
-                    { subject: "Иностранный язык", room: "А1" }
-                ],
-                "05/06/24": [
-                    { subject: "Иностранный язык", room: "А1" },
-                    { subject: "Математика для менеджеров", room: "А1" },
-                    { subject: "Математика для менеджеров", room: "А1" },
-                    { subject: "Физическая культура" }
-                ],
-                "06/06/24": [
-                    { subject: "Иностранный язык", room: "А1" },
-                    { subject: "Иностранный язык", room: "А1" },
-                    { subject: "Иностранный язык", room: "А1" }
-                ],
-                "07/06/24": [
-                    { subject: "Иностранный язык", room: "А1" }
-                ]
-            }
-        },
-        {
-            course: "1",
-            direction: "pmi",
-            schedule: {
-                "01/06/24": [
-                    { subject: "Иностранный язык", room: "А2" }
-                ],
-                "03/06/24": [
-                    { subject: "Дискретная математика", room: "А2" },
-                    { subject: "Дискретная математика", room: "А2" },
-                    { subject: "Дискретная математика", room: "А2" },
-                    { subject: "Физическая культура" }
-                ],
-                "04/06/24": [
-                    { subject: "Дискретная математика", room: "А2" },
-                    { subject: "Дискретная математика", room: "А2" },
-                    { subject: "Дискретная математика", room: "А2" },
-                    { subject: "Иностранный язык", room: "А2" }
-                ],
-                "05/06/24": [
-                    { subject: "Дискретная математика", room: "А2" },
-                    { subject: "Дискретная математика", room: "А2" },
-                    { subject: "Дискретная математика", room: "А2" },
-                    { subject: "Физическая культура" }
-                ],
-                "06/06/24": [
-                    { subject: "Дискретная математика", room: "А2" },
-                    { subject: "Дискретная математика", room: "А2" },
-                    { subject: "Дискретная математика", room: "А2" },
-                    { subject: "Иностранный язык", room: "А2" }
-                ],
-                "07/06/24": [
-                    { subject: "Дискретная математика", room: "А2" },
-                    { subject: "Дискретная математика", room: "А2" },
-                    { subject: "Дискретная математика", room: "А2" }
-                ]
-            }
-        },
-        {
-            course: "1",
-            direction: "jurisprudence",
-            schedule: {
-                "01/06/24": [
-                    { subject: "Противоправное поведение и правонарушение", room: "Л1" },
-                    { subject: "Противоправное поведение и правонарушение", room: "Л1" },
-                    { subject: "Противоправное поведение и правонарушение", room: "Л1" },
-                    { subject: "Иностранный язык", room: "Л1" }
-                ],
-                "03/06/24": [
-                    { subject: "Иностранный язык", room: "Л1" },
-                    { subject: "Иностранный язык", room: "Л1" },
-                    { subject: "Иностранный язык", room: "Л1" },
-                    { subject: "Физическая культура" }
-                ],
-                "04/06/24": [
-                    { subject: "Иностранный язык", room: "Л1" },
-                    { subject: "Иностранный язык", room: "Л1" },
-                    { subject: "Иностранный язык", room: "Л1" },
-                    { subject: "ИОГП", room: "Л1" },
-                    { subject: "ИОГП", room: "Л1" }
-                ],
-                "05/06/24": [
-                    { subject: "ИОГП", room: "Л1" },
-                    { subject: "ИОГП", room: "Л1" },
-                    { subject: "ИОГП", room: "Л1" },
-                    { subject: "Физическая культура" }
-                ],
-                "06/06/24": [
-                    { subject: "ИОГП", room: "Л1" },
-                    { subject: "ИОГП", room: "Л1" },
-                    { subject: "ИОГП", room: "Л1" },
-                    { subject: "ИОГП", room: "Л1" }
-                ],
-                "07/06/24": [
-                    { subject: "ИОГП", room: "Л1" },
-                    { subject: "ИОГП", room: "Л1" },
-                    { subject: "ИОГП", room: "Л1" }
-                ]
-            }
-        }
+        // массивы
     ];
 
     const userId = tg.initDataUnsafe.user.id.toString();
@@ -134,25 +19,24 @@ document.addEventListener("DOMContentLoaded", function() {
     let schedule;
 
     const storedCourse = localStorage.getItem('course');
-const storedDirection = localStorage.getItem('direction');
-const storedUserId = localStorage.getItem('userId'); // Получаем сохраненный userId
+    const storedDirection = localStorage.getItem('direction');
 
-if (storedCourse && storedDirection && storedUserId === userId) { // Сравниваем сохраненный userId с текущим
-    console.log(`Stored course: ${storedCourse}, direction: ${storedDirection}`);
-    for (const sched of schedules) {
-        if (sched.course === storedCourse && sched.direction === storedDirection) {
-            schedule = sched.schedule;
-            break;
+    if (storedCourse && storedDirection) {
+        console.log(`Stored course: ${storedCourse}, direction: ${storedDirection}`);
+        for (const sched of schedules) {
+            if (sched.course === storedCourse && sched.direction === storedDirection) {
+                schedule = sched.schedule;
+                break;
+            }
         }
+        if (schedule) {
+            document.getElementById('formContainer').classList.add('hidden');
+            document.getElementById('mainContent').classList.remove('hidden');
+            showSchedule(schedule);
+        }
+    } else {
+        document.getElementById('formContainer').classList.remove('hidden');
     }
-    if (schedule) {
-        document.getElementById('formContainer').classList.add('hidden');
-        document.getElementById('mainContent').classList.remove('hidden');
-        showSchedule(schedule);
-    }
-} else {
-    document.getElementById('formContainer').classList.remove('hidden');
-}
 
     document.getElementById('userForm').addEventListener('submit', function(e) {
         e.preventDefault();
@@ -163,33 +47,31 @@ if (storedCourse && storedDirection && storedUserId === userId) { // Сравн�
         console.log(`Введенные данные - Курс: ${course}, Направление: ${direction}, Пароль: ${password}`);
 
         if (password === '12345678') {
-    for (const sched of schedules) {
-        if (sched.course === course && sched.direction === direction) {
-            schedule = sched.schedule;
-            break;
+            for (const sched of schedules) {
+                if (sched.course === course && sched.direction === direction) {
+                    schedule = sched.schedule;
+                    break;
+                }
+            }
+
+            if (schedule) {
+                localStorage.setItem('course', course);
+                localStorage.setItem('direction', direction);
+                // Анимация скрытия формы
+                document.getElementById('formContainer').style.transition = 'transform 0.5s ease-out';
+                document.getElementById('formContainer').style.transform = 'translateX(-100%)';
+                setTimeout(() => {
+                    document.getElementById('formContainer').classList.add('hidden');
+                    document.getElementById('mainContent').classList.remove('hidden');
+                    showSchedule(schedule);
+                }, 500);
+            } else {
+                alert('Нет расписания для выбранного курса и направления.');
+            }
+        } else {
+            alert('Неверный пароль');
         }
-    }
-
-    if (schedule) {
-        localStorage.setItem('course', course);
-        localStorage.setItem('direction', direction);
-        localStorage.setItem('userId', userId); // Сохраняем userId
-
-        // Анимация скрытия формы
-        document.getElementById('formContainer').style.transition = 'transform 0.5s ease-out';
-        document.getElementById('formContainer').style.transform = 'translateX(-100%)';
-        setTimeout(() => {
-            document.getElementById('formContainer').classList.add('hidden');
-            document.getElementById('mainContent').classList.remove('hidden');
-            showSchedule(schedule);
-        }, 500);
-    } else {
-        alert('Нет расписания для выбранного курса и направления.');
-    }
-} else {
-    alert('Неверный пароль');
-}
-});
+    });
 
     function showSchedule(schedule) {
         const now = new Date();
