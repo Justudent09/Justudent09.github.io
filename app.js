@@ -276,6 +276,8 @@ document.addEventListener("DOMContentLoaded", function() {
         const todayCouples = schedule[todayDateKey] || [];
         updateCouples(todayDateKey);
 
+        updateAppealText(todayCouples.length); // Обновить текст только один раз для сегодняшнего дня
+
         for (let i = 1; i <= daysInMonth; i++) {
             const dayDiv = document.createElement("div");
             dayDiv.classList.add("my-div");
