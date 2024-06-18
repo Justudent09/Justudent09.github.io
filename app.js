@@ -137,7 +137,6 @@ document.addEventListener("DOMContentLoaded", function() {
     const storedDirection = localStorage.getItem('direction');
 
     if (storedCourse && storedDirection) {
-        console.log(`Stored course: ${storedCourse}, direction: ${storedDirection}`);
         for (const sched of schedules) {
             if (sched.course === storedCourse && sched.direction === storedDirection) {
                 schedule = sched.schedule;
