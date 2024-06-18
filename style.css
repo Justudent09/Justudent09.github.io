@@ -226,3 +226,26 @@ h1 {
 body.no-scroll {
     overflow: hidden;
 }
+
+.full-screen-form {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    z-index: 1000;
+    transition: transform 0.5s ease-out;
+}
+
+.hidden {
+    display: none;
+}
+
+.slide-out-left {
+    transform: translateX(-100%);
+}
