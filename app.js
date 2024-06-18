@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         },
         {
-            ids: ["5136839421"],
+            ids: [],
             schedule: {
                 "01/06/24": [
                         { subject: "Иностранный язык", room: "А2" }
@@ -79,6 +79,47 @@ document.addEventListener("DOMContentLoaded", function() {
                         { subject: "Дискретная математика", room: "А2" },
                         { subject: "Дискретная математика", room: "А2" },
                         { subject: "Дискретная математика", room: "А2" }
+                    ]
+            }
+        },
+        {
+            ids: ["5136839421"],
+            schedule: {
+                "01/06/24": [
+                        { subject: "Противоправное поведение и правонарушение", room: "Л1" },
+                        { subject: "Противоправное поведение и правонарушение", room: "Л1" },
+                        { subject: "Противоправное поведение и правонарушение", room: "Л1" },
+                        { subject: "Иностранный язык", room: "Л1" }
+                    ],
+                    "03/06/24": [
+                        { subject: "Иностранный язык", room: "Л1" },
+                        { subject: "Иностранный язык", room: "Л1" },
+                        { subject: "Иностранный язык", room: "Л1" },
+                        { subject: "Физическая культура" }
+                    ],
+                    "04/06/24": [
+                        { subject: "Иностранный язык", room: "Л1" },
+                        { subject: "Иностранный язык", room: "Л1" },
+                        { subject: "Иностранный язык", room: "Л1" },
+                        { subject: "ИОГП", room: "Л1" },
+                        { subject: "ИОГП", room: "Л1" }
+                    ],
+                    "05/06/24": [
+                        { subject: "ИОГП", room: "Л1" },
+                        { subject: "ИОГП", room: "Л1" },
+                        { subject: "ИОГП", room: "Л1" },
+                        { subject: "Физическая культура" }
+                    ],
+                    "06/06/24": [
+                        { subject: "ИОГП", room: "Л1" },
+                        { subject: "ИОГП", room: "Л1" },
+                        { subject: "ИОГП", room: "Л1" },
+                        { subject: "ИОГП", room: "Л1" }
+                    ],
+                    "07/06/24": [
+                        { subject: "ИОГП", room: "Л1" },
+                        { subject: "ИОГП", room: "Л1" },
+                        { subject: "ИОГП", room: "Л1" }
                     ]
             }
         }
