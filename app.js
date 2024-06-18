@@ -278,46 +278,46 @@ document.addEventListener("DOMContentLoaded", function() {
         updateCouples(todayDateKey);
 
         for (let i = 1; i <= daysInMonth; i++) {
-            const dayDiv = document.createElement("div");
-            dayDiv.classList.add("my-div");
+        const dayDiv = document.createElement("div");
+        dayDiv.classList.add("my-div");
 
-            const circleDiv = document.createElement("div");
-            circleDiv.classList.add("circle");
-            circleDiv.textContent = i;
+        const circleDiv = document.createElement("div");
+        circleDiv.classList.add("circle");
+        circleDiv.textContent = i;
 
-            const dayName = document.createElement("p");
-            const date = new Date(now.getFullYear(), now.getMonth(), i);
-            const dateKey = formatDate(date);
-            dayName.textContent = dayNames[date.getDay()];
+        const dayName = document.createElement("p");
+        const date = new Date(now.getFullYear(), now.getMonth(), i);
+        const dateKey = formatDate(date);
+        dayName.textContent = dayNames[date.getDay()];
 
-            dayDiv.appendChild(circleDiv);
-            dayDiv.appendChild(dayName);
-            daysContainer.appendChild(dayDiv);
+        dayDiv.appendChild(circleDiv);
+        dayDiv.appendChild(dayName);
+        daysContainer.appendChild(dayDiv);
 
-            if (i === now.getDate()) {
-                dayDiv.classList.add('active');
-                circleDiv.style.background = 'linear-gradient(#B4B2E2, #9293DF)';
-                dayDiv.style.color = 'white';
-                activeDayDiv = dayDiv;
+        if (i === now.getDate()) {
+            dayDiv.classList.add('active');
+            circleDiv.style.background = 'linear-gradient(#B4B2E2, #9293DF)';
+            dayDiv.style.color = 'white';
+            activeDayDiv = dayDiv;
 
-                updateCouples(dateKey);
+            updateCouples(dateKey);
+        }
+
+        dayDiv.addEventListener('click', function() {
+            if (activeDayDiv) {
+                activeDayDiv.classList.remove('active');
+                activeDayDiv.querySelector('.circle').style.background = '#28272C';
+                activeDayDiv.style.color = '#5D5C61';
             }
 
-            dayDiv.addEventListener('click', function() {
-                if (activeDayDiv) {
-                    activeDayDiv.classList.remove('active');
-                    activeDayDiv.querySelector('.circle').style.background = '#28272C';
-                    activeDayDiv.style.color = '#5D5C61';
-                }
+            this.classList.add('active');
+            this.querySelector('.circle').style.background = 'linear-gradient(#B4B2E2, #9293DF)';
+            this.style.color = 'white';
+            activeDayDiv = this;
 
-                this.classList.add('active');
-                this.querySelector('.circle').style.background = 'linear-gradient(#B4B2E2, #9293DF)';
-                this.style.color = 'white';
-                activeDayDiv = this;
-
-                updateCouples(dateKey);
-            });
-        }
+            updateCouples(dateKey);
+        });
+    }
 
         const monthNames = [
             "Jan", "Feb", "Mar", "Apr", "May", "Jun",
