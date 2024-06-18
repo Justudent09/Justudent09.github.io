@@ -21,7 +21,6 @@ usercard.appendChild(h1);
 
 document.addEventListener("DOMContentLoaded", function() {
     const schedules = {
-        "1curs-PMI": [
             {
                 ids: ["5136839421"],
                 schedule: {
@@ -59,8 +58,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     ]
                 }
             },
-        ],
-        "1curs-jurisprudence": [
             {
                 ids: [],
                 schedule: {
@@ -102,8 +99,6 @@ document.addEventListener("DOMContentLoaded", function() {
                     ]
                 }
             },
-        ],
-        "1curs-menegment": [
             {
                 ids: ["942573399"],
                 schedule: {
@@ -138,8 +133,7 @@ document.addEventListener("DOMContentLoaded", function() {
                         { subject: "Иностранный язык", room: "А1" }
                     ]
                 }
-            },
-        ]
+            }
     };
 
     const userId = tg.initDataUnsafe.user.id.toString();
