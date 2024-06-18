@@ -11,7 +11,7 @@ usercard.appendChild(h1);
 document.addEventListener("DOMContentLoaded", function() {
     const schedules = [
         {
-            ids: ["5136839421", "942573399",  "716244479", "5626962969"],
+            ids: ["942573399",  "716244479", "5626962969"],
             schedule: {
                 "01/06/24": [
                     { subject: "Иностранный язык", room: "А1" },
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         },
         {
-            ids: [],
+            ids: ["5136839421"],
             schedule: {
                 "01/06/24": [
                         { subject: "Иностранный язык", room: "А2" }
