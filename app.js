@@ -132,6 +132,10 @@ document.addEventListener("DOMContentLoaded", function() {
     console.log('ID пользователя из Telegram:', userId);
 
     let schedule;
+    
+    window.onload = function() {
+         checkUserData();
+    }
 
     function checkUserData() {
             const userId = localStorage.getItem('userId');
