@@ -33,6 +33,7 @@
     </form>
 
     <div id="schedule"></div>
+    <button id="deleteButton" class="hidden">Удалить данные</button>
 
     <script>
         // Функция для проверки, сохранены ли данные пользователя
@@ -42,8 +43,9 @@
                 const userCourse = localStorage.getItem('course');
                 const userDirection = localStorage.getItem('direction');
                 showSchedule(userCourse, userDirection);
-                // Скрываем форму, если данные уже сохранены
+                // Скрываем форму и показываем кнопку удаления, если данные уже сохранены
                 document.getElementById('userForm').classList.add('hidden');
+                document.getElementById('deleteButton').classList.remove('hidden');
             }
         }
 
@@ -66,8 +68,9 @@
                 const userId = 'user-telegram-id'; // Замените на реальный ID пользователя Telegram
                 saveUserId(userId, course, direction);
                 showSchedule(course, direction);
-                // Скрываем форму после ввода данных
+                // Скрываем форму и показываем кнопку удаления после ввода данных
                 document.getElementById('userForm').classList.add('hidden');
+                document.getElementById('deleteButton').classList.remove('hidden');
             } else {
                 alert('Неверный пароль');
             }
@@ -82,6 +85,26 @@
             localStorage.setItem('userId', userId);
             localStorage.setItem('course', course);
             localStorage.setItem('direction', direction);
+        }
+
+        // Обработчик удаления данных
+        document.getElementById('deleteButton').addEventListener('click', function() {
+            const userId = localStorage.getItem('userId');
+            deleteUserId(userId);
+            alert('Данные удалены. Пожалуйста, обновите страницу.');
+            document.getElementById('userForm').classList.remove('hidden');
+            document.getElementById('deleteButton').classList.add('hidden');
+            document.getElementById('schedule').innerHTML = '';
+        });
+
+        // Функция для удаления ID пользователя
+        function deleteUserId(userId) {
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            users = users.filter(user => user.id !== userId);
+            localStorage.setItem('users', JSON.stringify(users));
+            localStorage.removeItem('userId');
+            localStorage.removeItem('course');
+            localStorage.removeItem('direction');
         }
 
         // Проверка данных пользователя при загрузке страницы
