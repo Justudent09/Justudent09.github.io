@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function() {
         const direction = document.getElementById('direction').value;
         const password = document.getElementById('password').value;
 
-        if (password === '12345678') {
+        if (password === '1') {
             for (const sched of schedules) {
                 if (sched.course === course && sched.direction === direction) {
                     schedule = sched.schedule;
