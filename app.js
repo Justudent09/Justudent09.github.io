@@ -145,6 +145,16 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
 
+    function saveUserId(userId, course, direction) {
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = { id: userId, course: course, direction: direction };
+            users.push(user);
+            localStorage.setItem('users', JSON.stringify(users));
+            localStorage.setItem('userId', userId);
+            localStorage.setItem('course', course);
+            localStorage.setItem('direction', direction);
+        }
+
     document.getElementById('userForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const course = document.getElementById('course').value;
