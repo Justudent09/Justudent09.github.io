@@ -189,6 +189,7 @@ if (storedCourse && storedDirection && storedUserId === userId) { // Сравн�
 } else {
     alert('Неверный пароль');
 }
+});
 
     function showSchedule(schedule) {
         const now = new Date();
