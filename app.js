@@ -133,25 +133,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
     let schedule;
 
-    const storedCourse = localStorage.getItem('course');
-    const storedDirection = localStorage.getItem('direction');
-
-    if (storedCourse && storedDirection) {
-        console.log(`Stored course: ${storedCourse}, direction: ${storedDirection}`);
-        for (const sched of schedules) {
-            if (sched.course === storedCourse && sched.direction === storedDirection) {
-                schedule = sched.schedule;
-                break;
+    function checkUserData() {
+            const userId = localStorage.getItem('userId');
+            if (userId) {
+                const userCourse = localStorage.getItem('course');
+                const userDirection = localStorage.getItem('direction');
+                showSchedule(userCourse, userDirection);
+                // Скрываем форму и показываем кнопку удаления, если данные уже сохранены
+                document.getElementById('userForm').classList.add('hidden');
+                document.getElementById('deleteButton').classList.remove('hidden');
             }
         }
-        if (schedule) {
-            document.getElementById('formContainer').classList.add('hidden');
-            document.getElementById('mainContent').classList.remove('hidden');
-            showSchedule(schedule);
-        }
-    } else {
-        document.getElementById('formContainer').classList.remove('hidden');
-    }
 
     document.getElementById('userForm').addEventListener('submit', function(e) {
         e.preventDefault();
