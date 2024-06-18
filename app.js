@@ -10,7 +10,7 @@ usercard.appendChild(h1);
 
 document.addEventListener("DOMContentLoaded", function() {
     const schedules = [
-        {
+                {
             course: "1",
             direction: "management",
             schedule: {
@@ -171,9 +171,14 @@ document.addEventListener("DOMContentLoaded", function() {
             if (schedule) {
                 localStorage.setItem('course', course);
                 localStorage.setItem('direction', direction);
-                document.getElementById('formContainer').classList.add('hidden');
-                document.getElementById('mainContent').classList.remove('hidden');
-                showSchedule(schedule);
+                // Анимация скрытия формы
+                document.getElementById('formContainer').style.transition = 'transform 0.5s ease-out';
+                document.getElementById('formContainer').style.transform = 'translateX(-100%)';
+                setTimeout(() => {
+                    document.getElementById('formContainer').classList.add('hidden');
+                    document.getElementById('mainContent').classList.remove('hidden');
+                    showSchedule(schedule);
+                }, 500);
             } else {
                 alert('Нет расписания для выбранного курса и направления.');
             }
