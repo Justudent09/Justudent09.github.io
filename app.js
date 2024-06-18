@@ -137,6 +137,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const storedDirection = localStorage.getItem('direction');
 
     if (storedCourse && storedDirection) {
+        console.log(`Stored course: ${storedCourse}, direction: ${storedDirection}`);
         for (const sched of schedules) {
             if (sched.course === storedCourse && sched.direction === storedDirection) {
                 schedule = sched.schedule;
@@ -247,30 +248,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         }
 
-       function updateAppealText(coupleCount) {
-        const appealText = document.getElementById("appealText");
-        switch (coupleCount) {
-            case 0:
-                appealText.textContent = "сегодня у вас выходной";
-                break;
-            case 1:
-                appealText.textContent = "сегодня у вас одна пара";
-                break;
-            case 2:
-                appealText.textContent = "сегодня у вас две пары";
-                break;
-            case 3:
-                appealText.textContent = "сегодня у вас три пары";
-                break;
-            case 4:
-                appealText.textContent = "сегодня у вас четыре пары";
-                break;
-            case 5:
-                appealText.textContent = "сегодня у вас пять пар";
-                break;
-        }
-    }
-
         const todayDateKey = formatDate(now);
         const todayCouples = schedule[todayDateKey] || [];
         updateCouples(todayDateKey);
@@ -374,7 +351,30 @@ document.addEventListener("DOMContentLoaded", function() {
         deleteButton.style.display = 'block'; // Показать кнопку при нажатии на иконку профиля
     });
 
-    
+    function updateAppealText(coupleCount) {
+        const appealText = document.getElementById("appealText");
+        switch (coupleCount) {
+            case 0:
+                appealText.textContent = "сегодня у вас выходной";
+                break;
+            case 1:
+                appealText.textContent = "сегодня у вас одна пара";
+                break;
+            case 2:
+                appealText.textContent = "сегодня у вас две пары";
+                break;
+            case 3:
+                appealText.textContent = "сегодня у вас три пары";
+                break;
+            case 4:
+                appealText.textContent = "сегодня у вас четыре пары";
+                break;
+            case 5:
+                appealText.textContent = "сегодня у вас пять пар";
+                break;
+        }
+    }
+
     function showSchedule(schedule) {
         const now = new Date();
         const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
