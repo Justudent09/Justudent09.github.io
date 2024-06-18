@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Выбор курса</title>
     <style>
-        /* Стили для скрытия формы */
+        /* Стили для скрытия элементов */
         .hidden {
             display: none;
         }
@@ -33,6 +33,7 @@
     </form>
 
     <div id="schedule"></div>
+    <button id="deleteButton" class="hidden">Удалить данные</button>
 
     <script>
         // Функция для проверки, сохранены ли данные пользователя
@@ -42,8 +43,9 @@
                 const userCourse = localStorage.getItem('course');
                 const userDirection = localStorage.getItem('direction');
                 showSchedule(userCourse, userDirection);
-                // Скрываем форму, если данные уже сохранены
+                // Скрываем форму и показываем кнопку удаления, если данные уже сохранены
                 document.getElementById('userForm').classList.add('hidden');
+                document.getElementById('deleteButton').classList.remove('hidden');
             }
         }
 
@@ -69,11 +71,23 @@
                 localStorage.setItem('direction', direction);
 
                 showSchedule(course, direction);
-                // Скрываем форму после ввода данных
+                // Скрываем форму и показываем кнопку удаления после ввода данных
                 document.getElementById('userForm').classList.add('hidden');
+                document.getElementById('deleteButton').classList.remove('hidden');
             } else {
                 alert('Неверный пароль');
             }
+        });
+
+        // Обработчик удаления данных
+        document.getElementById('deleteButton').addEventListener('click', function() {
+            localStorage.removeItem('userId');
+            localStorage.removeItem('course');
+            localStorage.removeItem('direction');
+            alert('Данные удалены. Пожалуйста, обновите страницу.');
+            document.getElementById('userForm').classList.remove('hidden');
+            document.getElementById('deleteButton').classList.add('hidden');
+            document.getElementById('schedule').innerHTML = '';
         });
 
         // Проверка данных пользователя при загрузке страницы
