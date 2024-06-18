@@ -11,7 +11,8 @@ usercard.appendChild(h1);
 document.addEventListener("DOMContentLoaded", function() {
     const schedules = [
         {
-            ids: ["942573399",  "716244479", "5626962969"],
+            course: "1",
+            direction: "management",
             schedule: {
                 "01/06/24": [
                     { subject: "Иностранный язык", room: "А1" },
@@ -46,81 +47,83 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         },
         {
-            ids: [],
+            course: "1",
+            direction: "pmi",
             schedule: {
                 "01/06/24": [
-                        { subject: "Иностранный язык", room: "А2" }
-                    ],
-                    "03/06/24": [
-                        { subject: "Дискретная математика", room: "А2" },
-                        { subject: "Дискретная математика", room: "А2" },
-                        { subject: "Дискретная математика", room: "А2" },
-                        { subject: "Физическая культура" }
-                    ],
-                    "04/06/24": [
-                        { subject: "Дискретная математика", room: "А2" },
-                        { subject: "Дискретная математика", room: "А2" },
-                        { subject: "Дискретная математика", room: "А2" },
-                        { subject: "Иностранный язык", room: "А2" }
-                    ],
-                    "05/06/24": [
-                        { subject: "Дискретная математика", room: "А2" },
-                        { subject: "Дискретная математика", room: "А2" },
-                        { subject: "Дискретная математика", room: "А2" },
-                        { subject: "Физическая культура" }
-                    ],
-                    "06/06/24": [
-                        { subject: "Дискретная математика", room: "А2" },
-                        { subject: "Дискретная математика", room: "А2" },
-                        { subject: "Дискретная математика", room: "А2" },
-                        { subject: "Иностранный язык", room: "А2" }
-                    ],
-                    "07/06/24": [
-                        { subject: "Дискретная математика", room: "А2" },
-                        { subject: "Дискретная математика", room: "А2" },
-                        { subject: "Дискретная математика", room: "А2" }
-                    ]
+                    { subject: "Иностранный язык", room: "А2" }
+                ],
+                "03/06/24": [
+                    { subject: "Дискретная математика", room: "А2" },
+                    { subject: "Дискретная математика", room: "А2" },
+                    { subject: "Дискретная математика", room: "А2" },
+                    { subject: "Физическая культура" }
+                ],
+                "04/06/24": [
+                    { subject: "Дискретная математика", room: "А2" },
+                    { subject: "Дискретная математика", room: "А2" },
+                    { subject: "Дискретная математика", room: "А2" },
+                    { subject: "Иностранный язык", room: "А2" }
+                ],
+                "05/06/24": [
+                    { subject: "Дискретная математика", room: "А2" },
+                    { subject: "Дискретная математика", room: "А2" },
+                    { subject: "Дискретная математика", room: "А2" },
+                    { subject: "Физическая культура" }
+                ],
+                "06/06/24": [
+                    { subject: "Дискретная математика", room: "А2" },
+                    { subject: "Дискретная математика", room: "А2" },
+                    { subject: "Дискретная математика", room: "А2" },
+                    { subject: "Иностранный язык", room: "А2" }
+                ],
+                "07/06/24": [
+                    { subject: "Дискретная математика", room: "А2" },
+                    { subject: "Дискретная математика", room: "А2" },
+                    { subject: "Дискретная математика", room: "А2" }
+                ]
             }
         },
         {
-            ids: ["5136839421"],
+            course: "1",
+            direction: "jurisprudence",
             schedule: {
                 "01/06/24": [
-                        { subject: "Противоправное поведение и правонарушение", room: "Л1" },
-                        { subject: "Противоправное поведение и правонарушение", room: "Л1" },
-                        { subject: "Противоправное поведение и правонарушение", room: "Л1" },
-                        { subject: "Иностранный язык", room: "Л1" }
-                    ],
-                    "03/06/24": [
-                        { subject: "Иностранный язык", room: "Л1" },
-                        { subject: "Иностранный язык", room: "Л1" },
-                        { subject: "Иностранный язык", room: "Л1" },
-                        { subject: "Физическая культура" }
-                    ],
-                    "04/06/24": [
-                        { subject: "Иностранный язык", room: "Л1" },
-                        { subject: "Иностранный язык", room: "Л1" },
-                        { subject: "Иностранный язык", room: "Л1" },
-                        { subject: "ИОГП", room: "Л1" },
-                        { subject: "ИОГП", room: "Л1" }
-                    ],
-                    "05/06/24": [
-                        { subject: "ИОГП", room: "Л1" },
-                        { subject: "ИОГП", room: "Л1" },
-                        { subject: "ИОГП", room: "Л1" },
-                        { subject: "Физическая культура" }
-                    ],
-                    "06/06/24": [
-                        { subject: "ИОГП", room: "Л1" },
-                        { subject: "ИОГП", room: "Л1" },
-                        { subject: "ИОГП", room: "Л1" },
-                        { subject: "ИОГП", room: "Л1" }
-                    ],
-                    "07/06/24": [
-                        { subject: "ИОГП", room: "Л1" },
-                        { subject: "ИОГП", room: "Л1" },
-                        { subject: "ИОГП", room: "Л1" }
-                    ]
+                    { subject: "Противоправное поведение и правонарушение", room: "Л1" },
+                    { subject: "Противоправное поведение и правонарушение", room: "Л1" },
+                    { subject: "Противоправное поведение и правонарушение", room: "Л1" },
+                    { subject: "Иностранный язык", room: "Л1" }
+                ],
+                "03/06/24": [
+                    { subject: "Иностранный язык", room: "Л1" },
+                    { subject: "Иностранный язык", room: "Л1" },
+                    { subject: "Иностранный язык", room: "Л1" },
+                    { subject: "Физическая культура" }
+                ],
+                "04/06/24": [
+                    { subject: "Иностранный язык", room: "Л1" },
+                    { subject: "Иностранный язык", room: "Л1" },
+                    { subject: "Иностранный язык", room: "Л1" },
+                    { subject: "ИОГП", room: "Л1" },
+                    { subject: "ИОГП", room: "Л1" }
+                ],
+                "05/06/24": [
+                    { subject: "ИОГП", room: "Л1" },
+                    { subject: "ИОГП", room: "Л1" },
+                    { subject: "ИОГП", room: "Л1" },
+                    { subject: "Физическая культура" }
+                ],
+                "06/06/24": [
+                    { subject: "ИОГП", room: "Л1" },
+                    { subject: "ИОГП", room: "Л1" },
+                    { subject: "ИОГП", room: "Л1" },
+                    { subject: "ИОГП", room: "Л1" }
+                ],
+                "07/06/24": [
+                    { subject: "ИОГП", room: "Л1" },
+                    { subject: "ИОГП", room: "Л1" },
+                    { subject: "ИОГП", room: "Л1" }
+                ]
             }
         }
     ];
@@ -130,25 +133,62 @@ document.addEventListener("DOMContentLoaded", function() {
 
     let schedule;
 
-    for (const sched of schedules) {
-        if (sched.ids.includes(userId)) {
-            schedule = sched.schedule;
-            break;
+    const storedCourse = localStorage.getItem('course');
+    const storedDirection = localStorage.getItem('direction');
+
+    if (storedCourse && storedDirection) {
+        for (const sched of schedules) {
+            if (sched.course === storedCourse && sched.direction === storedDirection) {
+                schedule = sched.schedule;
+                break;
+            }
         }
+        if (schedule) {
+            document.getElementById('formContainer').classList.add('hidden');
+            document.getElementById('mainContent').classList.remove('hidden');
+            showSchedule(schedule);
+        }
+    } else {
+        document.getElementById('formContainer').classList.remove('hidden');
     }
 
-    if (!schedule) {
-        document.body.innerHTML = '<div id="centeredText"><h1 style="color: white; font-size: 2em;">ИЗВИНИТЕ, ДОСТУП К ДАННОМУ БОТУ ОГРАНИЧЕН</h1></div>';
-        return;
-    }
+    document.getElementById('userForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const course = document.getElementById('course').value;
+        const direction = document.getElementById('direction').value;
+        const password = document.getElementById('password').value;
 
-    const now = new Date();
-    const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
-    const daysContainer = document.getElementById("daysContainer");
-    const appealText = document.getElementById("appealText");
-    const contour = document.getElementById("contour");
+        if (password === '12345678') {
+            for (const sched of schedules) {
+                if (sched.course === course && sched.direction === direction) {
+                    schedule = sched.schedule;
+                    break;
+                }
+            }
 
-    const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+            if (schedule) {
+                localStorage.setItem('course', course);
+                localStorage.setItem('direction', direction);
+                document.getElementById('formContainer').classList.add('hidden');
+                document.getElementById('mainContent').classList.remove('hidden');
+                showSchedule(schedule);
+            } else {
+                alert('Нет расписания для выбранного курса и направления.');
+            }
+        } else {
+            alert('Неверный пароль');
+        }
+    });
+
+    function showSchedule(schedule) {
+        const now = new Date();
+        const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+        const daysContainer = document.getElementById("daysContainer");
+        const appealText = document.getElementById("appealText");
+        const contour = document.getElementById("contour");
+
+        const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
 
     let activeDayDiv;
 
