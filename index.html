@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Выбор курса</title>
+    <style>
+        /* Стили для скрытия формы */
+        .hidden {
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <form id="userForm">
@@ -36,6 +42,8 @@
                 const userCourse = localStorage.getItem('course');
                 const userDirection = localStorage.getItem('direction');
                 showSchedule(userCourse, userDirection);
+                // Скрываем форму, если данные уже сохранены
+                document.getElementById('userForm').classList.add('hidden');
             }
         }
 
@@ -61,6 +69,8 @@
                 localStorage.setItem('direction', direction);
 
                 showSchedule(course, direction);
+                // Скрываем форму после ввода данных
+                document.getElementById('userForm').classList.add('hidden');
             } else {
                 alert('Неверный пароль');
             }
