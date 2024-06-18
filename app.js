@@ -181,7 +181,7 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     function showSchedule(schedule) {
-        const now = new Date();
+    const now = new Date();
     const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
     const daysContainer = document.getElementById("daysContainer");
     const appealText = document.getElementById("appealText");
@@ -365,4 +365,5 @@ document.addEventListener("DOMContentLoaded", function() {
     profileIcon.addEventListener('click', function() {
         deleteButton.style.display = 'block'; // Показать кнопку при нажатии на иконку профиля
     });
+   }
 });
