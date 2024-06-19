@@ -128,9 +128,6 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     ];
 
-    const userId = tg.initDataUnsafe.user.id.toString();
-    console.log('ID пользователя из Telegram:', userId);
-
     let schedule;
     
       function checkUserData() {
