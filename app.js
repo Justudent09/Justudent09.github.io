@@ -133,11 +133,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     let schedule;
     
-    window.onload = function() {
-         checkUserData();
-    }
-
-    function checkUserData() {
+      function checkUserData() {
             const userId = localStorage.getItem('userId');
             if (userId) {
                 const userCourse = localStorage.getItem('course');
@@ -145,57 +141,13 @@ document.addEventListener("DOMContentLoaded", function() {
                 showSchedule(userCourse, userDirection);
                 // Скрываем форму и показываем кнопку удаления, если данные уже сохранены
                 document.getElementById('userForm').classList.add('hidden');
-                
+                document.getElementById('deleteButton').classList.remove('hidden');
             }
         }
 
-    function saveUserId(userId, course, direction) {
-            let users = JSON.parse(localStorage.getItem('users')) || [];
-            const user = { id: userId, course: course, direction: direction };
-            users.push(user);
-            localStorage.setItem('users', JSON.stringify(users));
-            localStorage.setItem('userId', userId);
-            localStorage.setItem('course', course);
-            localStorage.setItem('direction', direction);
-        }
-
-    document.getElementById('userForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        const course = document.getElementById('course').value;
-        const direction = document.getElementById('direction').value;
-        const password = document.getElementById('password').value;
-
-        console.log(`Введенные данные - Курс: ${course}, Направление: ${direction}, Пароль: ${password}`);
-
-        if (password === '12345678') {
-            for (const sched of schedules) {
-                if (sched.course === course && sched.direction === direction) {
-                    schedule = sched.schedule;
-                    break;
-                }
-            }
-
-            if (schedule) {
-                localStorage.setItem('course', course);
-                localStorage.setItem('direction', direction);
-                // Анимация скрытия формы
-                document.getElementById('formContainer').style.transition = 'transform 0.5s ease-out';
-                document.getElementById('formContainer').style.transform = 'translateX(-100%)';
-                setTimeout(() => {
-                    document.getElementById('formContainer').classList.add('hidden');
-                    document.getElementById('mainContent').classList.remove('hidden');
-                    showSchedule(schedule);
-                }, 500);
-            } else {
-                alert('Нет расписания для выбранного курса и направления.');
-            }
-        } else {
-            alert('Неверный пароль');
-        }
-    });
-
-    function showSchedule(schedule) {
-    const now = new Date();
+        // Функция для отображения расписания
+        function showSchedule(schedule) {
+            const now = new Date();
     const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
     const daysContainer = document.getElementById("daysContainer");
     const appealText = document.getElementById("appealText");
@@ -379,5 +331,41 @@ document.addEventListener("DOMContentLoaded", function() {
     profileIcon.addEventListener('click', function() {
         deleteButton.style.display = 'block'; // Показать кнопку при нажатии на иконку профиля
     });
-   }
-});
+        }
+
+        // Обработчик отправки формы пользователя
+        document.getElementById('userForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const course = document.getElementById('course').value;
+            const direction = document.getElementById('direction').value;
+            const password = document.getElementById('password').value;
+
+            // Проверка пароля
+            if (password === '12345678') {
+                const userId = 'user-telegram-id'; // Замените на реальный ID пользователя Telegram
+                saveUserId(userId, course, direction);
+                showSchedule(course, direction);
+                // Скрываем форму и показываем кнопку удаления после ввода данных
+                document.getElementById('userForm').classList.add('hidden');
+                document.getElementById('deleteButton').classList.remove('hidden');
+            } else {
+                alert('Неверный пароль');
+            }
+        });
+
+        // Функция для сохранения ID пользователя
+        function saveUserId(userId, course, direction) {
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = { id: userId, course: course, direction: direction };
+            users.push(user);
+            localStorage.setItem('users', JSON.stringify(users));
+            localStorage.setItem('userId', userId);
+            localStorage.setItem('course', course);
+            localStorage.setItem('direction', direction);
+        }
+
+        // Проверка данных пользователя при загрузке страницы
+        window.onload = function() {
+            checkUserData();
+        }
+    });
