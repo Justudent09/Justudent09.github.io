@@ -1,31 +1,29 @@
 let tg = window.Telegram.WebApp;
-
 let usercard = document.getElementById("usercard");
-
 let h1 = document.createElement("h1");
-
 h1.innerText = `${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.last_name},`;
-
 usercard.appendChild(h1);
 
-let schedule = {};  
+// Глобальная переменная для расписания
+let schedule = {};
 
 // Функция для проверки, сохранены ли данные пользователя
 function checkUserData() {
-            const userId = localStorage.getItem('userId');
-            if (userId) {
-                const userCourse = localStorage.getItem('course');
-                const userDirection = localStorage.getItem('direction');
-                showSchedule(userCourse, userDirection);
-                // Скрываем форму и показываем кнопку удаления, если данные уже сохранены
-                document.getElementById('userForm').classList.add('hidden');
-                document.getElementById('deleteButton').classList.remove('hidden');
-            }
-        }
+    const userId = localStorage.getItem('userId');
+    if (userId) {
+        const userCourse = localStorage.getItem('course');
+        const userDirection = localStorage.getItem('direction');
+        showSchedule(userCourse, userDirection);
+        // Скрываем форму и показываем кнопку удаления, если данные уже сохранены
+        document.getElementById('userForm').classList.add('hidden');
+        document.getElementById('deleteButton').classList.remove('hidden');
+        document.getElementById('mainContent').classList.remove('hidden');
+    }
+}
 
-        // Функция для отображения расписания
+// Функция для отображения расписания
 function showSchedule(course, direction) {
-const schedules = [
+    const schedules = [
         {
             course: "1",
             direction: "management",
@@ -144,6 +142,7 @@ const schedules = [
         }
     ];
 
+    let schedule;
     let foundSchedule = schedules.find(s => s.course === course && s.direction === direction);
     
     if (foundSchedule) {
@@ -152,7 +151,6 @@ const schedules = [
         console.error('Расписание не найдено для указанного курса и направления');
         return;
     }
-
 
     const now = new Date();
     const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
@@ -212,6 +210,8 @@ const schedules = [
         if (coupleCount === 0) {
             contour.innerHTML = '<div class="day-off">ВЫХОДНОЙ</div>';
         }
+
+        updateAppealText(coupleCount);
     }
 
     function updateAppealText(coupleCount) {
@@ -240,7 +240,6 @@ const schedules = [
     const todayDateKey = formatDate(now);
     const todayCouples = schedule[todayDateKey] || [];
     updateCouples(todayDateKey);
-    updateAppealText(todayCouples.length);
 
     for (let i = 1; i <= daysInMonth; i++) {
         const dayDiv = document.createElement("div");
@@ -293,13 +292,13 @@ const schedules = [
     const monthName = monthNames[now.getMonth()];
     const currentDate = `${monthName}, ${year}`;
 
-       document.getElementById("currentDateDiv").innerText = currentDate;
+    document.getElementById("currentDateDiv").innerText = currentDate;
 
     if (activeDayDiv) {
         const index = Array.prototype.indexOf.call(daysContainer.children, activeDayDiv);
         const offset = Math.max(index - 1, 0);
         daysContainer.scrollLeft = daysContainer.children[offset].offsetLeft - daysContainer.offsetWidth / 2 + activeDayDiv.offsetWidth / 2;
-    }
+        }
 
     const notificationsDiv = document.querySelector('.notifications');
     const notificationsPanel = document.getElementById('notificationsPanel');
@@ -322,77 +321,75 @@ const schedules = [
         event.stopPropagation();
     });
 
-    // Показать кнопку удаления при нажатии на иконку профиля
     const profileIcon = document.querySelector('.icon-profile');
-    const deleteButton = document.createElement('button');
-    deleteButton.textContent = 'Удалить все данные';
+    const deleteButton = document.getElementById('deleteButton');
     deleteButton.style.display = 'none';
     deleteButton.addEventListener('click', function() {
         localStorage.clear();
         alert('Все данные удалены. Пожалуйста, обновите страницу.');
-        location.reload(); // Перезагрузить страницу после удаления данных
+        location.reload();
     });
-
-    document.body.appendChild(deleteButton);
 
     profileIcon.addEventListener('click', function() {
         deleteButton.style.display = 'block'; // Показать кнопку при нажатии на иконку профиля
     });
-        }
-
-        // Обработчик отправки формы пользователя
-        document.getElementById('userForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const course = document.getElementById('course').value;
-            const direction = document.getElementById('direction').value;
-            const password = document.getElementById('password').value;
-
-            // Проверка пароля
-            if (password === '12345678') {
-                const userId = 'user-telegram-id'; // Замените на реальный ID пользователя Telegram
-                saveUserId(userId, course, direction);
-                showSchedule(course, direction);
-                // Скрываем форму и показываем кнопку удаления после ввода данных
-                document.getElementById('userForm').classList.add('hidden');
-                document.getElementById('deleteButton').classList.remove('hidden');
-            } else {
-                alert('Неверный пароль');
-            }
-        });
-
-        // Функция для сохранения ID пользователя
-        function saveUserId(userId, course, direction) {
-            let users = JSON.parse(localStorage.getItem('users')) || [];
-            const user = { id: userId, course: course, direction: direction };
-            users.push(user);
-            localStorage.setItem('users', JSON.stringify(users));
-            localStorage.setItem('userId', userId);
-            localStorage.setItem('course', course);
-            localStorage.setItem('direction', direction);
-        }
-
-        // Обработчик удаления данных
-        document.getElementById('deleteButton').addEventListener('click', function() {
-            const userId = localStorage.getItem('userId');
-            deleteUserId(userId);
-            alert('Данные удалены. Пожалуйста, обновите страницу.');
-            document.getElementById('userForm').classList.remove('hidden');
-            document.getElementById('deleteButton').classList.add('hidden');
-            document.getElementById('schedule').innerHTML = '';
-        });
 }
 
-        // Функция для удаления ID пользователя
-        function deleteUserId(userId) {
-            let users = JSON.parse(localStorage.getItem('users')) || [];
-            users = users.filter(user => user.id !== userId);
-            localStorage.setItem('users', JSON.stringify(users));
-            localStorage.removeItem('userId');
-            localStorage.removeItem('course');
-            localStorage.removeItem('direction');
-        }
+// Обработчик отправки формы пользователя
+document.getElementById('userForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const course = document.getElementById('course').value;
+    const direction = document.getElementById('direction').value;
+    const password = document.getElementById('password').value;
 
-        // Проверка данных пользователя при загрузке страницы
-        window.onload = function() {
-            checkUserData();
-        }
+    // Проверка пароля
+    if (password === '12345678') {
+        const userId = 'user-telegram-id'; // Замените на реальный ID пользователя Telegram
+        saveUserId(userId, course, direction);
+        showSchedule(course, direction);
+        // Скрываем форму и показываем кнопку удаления после ввода данных
+        document.getElementById('userForm').classList.add('hidden');
+        document.getElementById('deleteButton').classList.remove('hidden');
+        document.getElementById('mainContent').classList.remove('hidden');
+    } else {
+        alert('Неверный пароль');
+    }
+});
+
+// Функция для сохранения ID пользователя
+function saveUserId(userId, course, direction) {
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+    const user = { id: userId, course: course, direction: direction };
+    users.push(user);
+    localStorage.setItem('users', JSON.stringify(users));
+    localStorage.setItem('userId', userId);
+    localStorage.setItem('course', course);
+    localStorage.setItem('direction', direction);
+}
+
+// Обработчик удаления данных
+document.getElementById('deleteButton').addEventListener('click', function() {
+    const userId = localStorage.getItem('userId');
+    deleteUserId(userId);
+    alert('Данные удалены. Пожалуйста, обновите страницу.');
+    document.getElementById('userForm').classList.remove('hidden');
+    document.getElementById('deleteButton').classList.add('hidden');
+    document.getElementById('mainContent').classList.add('hidden');
+    document.getElementById('daysContainer').innerHTML = '';
+    document.getElementById('contour').innerHTML = '';
+});
+
+// Функция для удаления ID пользователя
+function deleteUserId(userId) {
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+    users = users.filter(user => user.id !== userId);
+    localStorage.setItem('users', JSON.stringify(users));
+    localStorage.removeItem('userId');
+    localStorage.removeItem('course');
+    localStorage.removeItem('direction');
+}
+
+// Проверка данных пользователя при загрузке страницы
+window.onload = function() {
+    checkUserData();
+}
