@@ -8,7 +8,24 @@ h1.innerText = `${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.la
 
 usercard.appendChild(h1);
 
-    const schedules = [
+    
+
+// Функция для проверки, сохранены ли данные пользователя
+        function checkUserData() {
+            const userId = localStorage.getItem('userId');
+            if (userId) {
+                const userCourse = localStorage.getItem('course');
+                const userDirection = localStorage.getItem('direction');
+                showSchedule(userCourse, userDirection);
+                // Скрываем форму и показываем кнопку удаления, если данные уже сохранены
+                document.getElementById('userForm').classList.add('hidden');
+                document.getElementById('deleteButton').classList.remove('hidden');
+            }
+        }
+
+        // Функция для отображения расписания
+        function showSchedule(course, direction) {
+const schedules = [
         {
             course: "1",
             direction: "management",
@@ -128,22 +145,6 @@ usercard.appendChild(h1);
     ];
 
     let schedule;
-
-// Функция для проверки, сохранены ли данные пользователя
-        function checkUserData() {
-            const userId = localStorage.getItem('userId');
-            if (userId) {
-                const userCourse = localStorage.getItem('course');
-                const userDirection = localStorage.getItem('direction');
-                showSchedule(schedule);
-                // Скрываем форму и показываем кнопку удаления, если данные уже сохранены
-                document.getElementById('userForm').classList.add('hidden');
-                document.getElementById('deleteButton').classList.remove('hidden');
-            }
-        }
-
-        // Функция для отображения расписания
-        function showSchedule(schedule) {
             const now = new Date();
     const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
     const daysContainer = document.getElementById("daysContainer");
