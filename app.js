@@ -154,6 +154,7 @@ function showSchedule(course, direction) {
     const now = new Date();
     const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
     const daysContainer = document.getElementById("daysContainer");
+    daysContainer.innerHTML = '';
     const appealText = document.getElementById("appealText");
     const contour = document.getElementById("contour");
 
@@ -238,8 +239,8 @@ function showSchedule(course, direction) {
 
     const todayDateKey = formatDate(now);
     const todayCouples = schedule[todayDateKey] || [];
-    updateCouples(todayDateKey);
-    updateAppealText(todayCouples.length);
+    const todayCoupleCount = updateCouples(todayDateKey);
+    updateAppealText(todayCoupleCount);
 
     for (let i = 1; i <= daysInMonth; i++) {
         const dayDiv = document.createElement("div");
