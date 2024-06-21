@@ -135,7 +135,7 @@ usercard.appendChild(h1);
             if (userId) {
                 const userCourse = localStorage.getItem('course');
                 const userDirection = localStorage.getItem('direction');
-                showSchedule(userCourse, userDirection);
+                showSchedule(schedule);
                 // Скрываем форму и показываем кнопку удаления, если данные уже сохранены
                 document.getElementById('userForm').classList.add('hidden');
                 document.getElementById('deleteButton').classList.remove('hidden');
