@@ -293,8 +293,9 @@ function showSchedule(course, direction) {
     const monthName = monthNames[now.getMonth()];
     const currentDate = `${monthName}, ${year}`;
 
-    document.getElementById("currentDateDiv").innerText = currentDate;
+      document.getElementById("currentDateDiv").innerText = currentDate;
 
+    // Добавляем прокрутку к активному элементу после его создания
     if (activeDayDiv) {
         const index = Array.prototype.indexOf.call(daysContainer.children, activeDayDiv);
         const offset = Math.max(index - 1, 0);
