@@ -371,6 +371,7 @@ const schedules = [
             document.getElementById('deleteButton').classList.add('hidden');
             document.getElementById('schedule').innerHTML = '';
         });
+}
 
         // Функция для удаления ID пользователя
         function deleteUserId(userId) {
