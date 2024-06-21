@@ -227,3 +227,6 @@ body.no-scroll {
     overflow: hidden;
 }
 
+.hidden {
+    display: none;
+}
