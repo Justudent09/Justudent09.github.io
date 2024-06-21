@@ -240,6 +240,7 @@ function showSchedule(course, direction) {
     const todayDateKey = formatDate(now);
     const todayCouples = schedule[todayDateKey] || [];
     updateCouples(todayDateKey);
+    updateAppealText(todayCouples.length);
 
     for (let i = 1; i <= daysInMonth; i++) {
         const dayDiv = document.createElement("div");
