@@ -297,9 +297,11 @@ function showSchedule(course, direction) {
 
     // Добавляем прокрутку к активному элементу после его создания
     if (activeDayDiv) {
-        const index = Array.prototype.indexOf.call(daysContainer.children, activeDayDiv);
-        const offset = Math.max(index - 1, 0);
-        daysContainer.scrollLeft = daysContainer.children[offset].offsetLeft - daysContainer.offsetWidth / 2 + activeDayDiv.offsetWidth / 2;
+        setTimeout(() => {
+            const index = Array.prototype.indexOf.call(daysContainer.children, activeDayDiv);
+            const offset = Math.max(index - 1, 0);
+            daysContainer.scrollLeft = daysContainer.children[offset].offsetLeft - daysContainer.offsetWidth / 2 + activeDayDiv.offsetWidth / 2;
+        }, 100); // 100 мс задержки перед прокруткой
     }
 
 
