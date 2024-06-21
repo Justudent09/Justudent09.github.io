@@ -8,7 +8,7 @@ h1.innerText = `${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.la
 
 usercard.appendChild(h1);
 
-    
+let schedule = {};  
 
 // Функция для проверки, сохранены ли данные пользователя
 function checkUserData() {
