@@ -8,7 +8,6 @@ h1.innerText = `${tg.initDataUnsafe.user.first_name} ${tg.initDataUnsafe.user.la
 
 usercard.appendChild(h1);
 
-document.addEventListener("DOMContentLoaded", function() {
     const schedules = [
         {
             course: "1",
@@ -129,8 +128,9 @@ document.addEventListener("DOMContentLoaded", function() {
     ];
 
     let schedule;
-    
-      function checkUserData() {
+
+// Функция для проверки, сохранены ли данные пользователя
+        function checkUserData() {
             const userId = localStorage.getItem('userId');
             if (userId) {
                 const userCourse = localStorage.getItem('course');
@@ -361,8 +361,27 @@ document.addEventListener("DOMContentLoaded", function() {
             localStorage.setItem('direction', direction);
         }
 
+        // Обработчик удаления данных
+        document.getElementById('deleteButton').addEventListener('click', function() {
+            const userId = localStorage.getItem('userId');
+            deleteUserId(userId);
+            alert('Данные удалены. Пожалуйста, обновите страницу.');
+            document.getElementById('userForm').classList.remove('hidden');
+            document.getElementById('deleteButton').classList.add('hidden');
+            document.getElementById('schedule').innerHTML = '';
+        });
+
+        // Функция для удаления ID пользователя
+        function deleteUserId(userId) {
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            users = users.filter(user => user.id !== userId);
+            localStorage.setItem('users', JSON.stringify(users));
+            localStorage.removeItem('userId');
+            localStorage.removeItem('course');
+            localStorage.removeItem('direction');
+        }
+
         // Проверка данных пользователя при загрузке страницы
         window.onload = function() {
             checkUserData();
         }
-    });
