@@ -214,7 +214,7 @@ function showSchedule(course, direction) {
         updateAppealText(coupleCount);
     }
 
-    function setAppealTextForToday(coupleCount) {
+    function updateAppealText(coupleCount) {
         switch (coupleCount) {
             case 0:
                 appealText.textContent = "сегодня у вас выходной";
@@ -239,8 +239,8 @@ function showSchedule(course, direction) {
 
     const todayDateKey = formatDate(now);
     const todayCouples = schedule[todayDateKey] || [];
-    const todayCoupleCount = updateCouples(todayDateKey);
-    setAppealTextForToday(todayCoupleCount); // Устанавливаем текст для сегодняшнего дня
+    updateCouples(todayDateKey);
+    updateAppealText(todayCouples.length);
 
     for (let i = 1; i <= daysInMonth; i++) {
         const dayDiv = document.createElement("div");
