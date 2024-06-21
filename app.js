@@ -11,7 +11,7 @@ usercard.appendChild(h1);
     
 
 // Функция для проверки, сохранены ли данные пользователя
-        function checkUserData() {
+function checkUserData() {
             const userId = localStorage.getItem('userId');
             if (userId) {
                 const userCourse = localStorage.getItem('course');
@@ -24,7 +24,7 @@ usercard.appendChild(h1);
         }
 
         // Функция для отображения расписания
-        function showSchedule(course, direction) {
+function showSchedule(course, direction) {
 const schedules = [
         {
             course: "1",
@@ -145,7 +145,7 @@ const schedules = [
     ];
 
     let schedule;
-            const now = new Date();
+    const now = new Date();
     const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
     const daysContainer = document.getElementById("daysContainer");
     const appealText = document.getElementById("appealText");
