@@ -142,7 +142,6 @@ function showSchedule(course, direction) {
         }
     ];
 
-    let schedule;
     let foundSchedule = schedules.find(s => s.course === course && s.direction === direction);
     
     if (foundSchedule) {
