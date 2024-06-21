@@ -144,7 +144,16 @@ const schedules = [
         }
     ];
 
-    let schedule;
+    let foundSchedule = schedules.find(s => s.course === course && s.direction === direction);
+    
+    if (foundSchedule) {
+        schedule = foundSchedule.schedule; // Сохраняем найденное расписание в глобальную переменную
+    } else {
+        console.error('Расписание не найдено для указанного курса и направления');
+        return;
+    }
+
+
     const now = new Date();
     const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
     const daysContainer = document.getElementById("daysContainer");
