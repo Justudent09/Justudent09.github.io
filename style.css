@@ -231,6 +231,10 @@ body.no-scroll {
     display: none;
 }
 
+.modal-hidden {
+    display: none;
+}
+
 .modal {
     display: flex;
     justify-content: center;
