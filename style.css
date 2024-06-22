@@ -244,9 +244,11 @@ body.no-scroll {
 }
 
 #mainContent {
-    opacity: 1;
-}
+            opacity: 0; /* Изначально скрыт */
+            transition: opacity 0.5s ease-out 0.5s; /* Задержка для плавного появления после анимации формы */
+        }
 
-.visible {
-     opacity: 1;
-}
+        /* Класс для отображения основного контента */
+        .visible {
+            opacity: 1;
+        }
