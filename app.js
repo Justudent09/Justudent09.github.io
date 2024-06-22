@@ -337,6 +337,7 @@ function showSchedule(course, direction) {
     confirmDeleteButton.addEventListener('click', function() {
         localStorage.clear();
         alert('Все данные удалены. Пожалуйста, обновите страницу.');
+        deleteModal.classList.add('modal-hidden');
         location.reload();
     });
 
