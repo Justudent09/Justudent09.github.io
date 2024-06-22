@@ -211,7 +211,7 @@ function showSchedule(course, direction) {
             contour.innerHTML = '<div class="day-off">ВЫХОДНОЙ</div>';
         }
 
-        updateAppealText(coupleCount);
+        return coupleCount;
     }
 
     function updateAppealText(coupleCount) {
@@ -239,8 +239,8 @@ function showSchedule(course, direction) {
 
     const todayDateKey = formatDate(now);
     const todayCouples = schedule[todayDateKey] || [];
-    updateCouples(todayDateKey);
-    updateAppealText(todayCouples.length);
+    const todayCoupleCount = updateCouples(todayDateKey);
+    updateAppealText(todayCoupleCount);
 
     for (let i = 1; i <= daysInMonth; i++) {
         const dayDiv = document.createElement("div");
@@ -280,10 +280,10 @@ function showSchedule(course, direction) {
             this.style.color = 'white';
             activeDayDiv = this;
 
-            updateCouples(dateKey);
+            const selectedDateKey = formatDate(new Date(now.getFullYear(), now.getMonth(), i));
+            updateCouples(selectedDateKey);
         });
     }
-
 
     const monthNames = [
         "Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -294,7 +294,7 @@ function showSchedule(course, direction) {
     const monthName = monthNames[now.getMonth()];
     const currentDate = `${monthName}, ${year}`;
 
-      document.getElementById("currentDateDiv").innerText = currentDate;
+    document.getElementById("currentDateDiv").innerText = currentDate;
 
     // Добавляем прокрутку к активному элементу после его создания
     if (activeDayDiv) {
@@ -304,7 +304,6 @@ function showSchedule(course, direction) {
             daysContainer.scrollLeft = daysContainer.children[offset].offsetLeft - daysContainer.offsetWidth / 2 + activeDayDiv.offsetWidth / 2;
         }, 100); // 100 мс задержки перед прокруткой
     }
-
 
     const notificationsDiv = document.querySelector('.notifications');
     const notificationsPanel = document.getElementById('notificationsPanel');
