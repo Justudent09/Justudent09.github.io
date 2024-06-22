@@ -246,3 +246,7 @@ body.no-scroll {
 #mainContent {
     opacity: 1;
 }
+
+.visible {
+     opacity: 1;
+}
