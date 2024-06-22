@@ -210,6 +210,8 @@ function showSchedule(course, direction) {
         if (coupleCount === 0) {
             contour.innerHTML = '<div class="day-off">ВЫХОДНОЙ</div>';
         }
+
+        updateAppealText(coupleCount);
     }
 
     function updateAppealText(coupleCount) {
@@ -282,6 +284,7 @@ function showSchedule(course, direction) {
         });
     }
 
+
     const monthNames = [
         "Jan", "Feb", "Mar", "Apr", "May", "Jun",
         "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
@@ -291,15 +294,17 @@ function showSchedule(course, direction) {
     const monthName = monthNames[now.getMonth()];
     const currentDate = `${monthName}, ${year}`;
 
-    document.getElementById("currentDateDiv").innerText = currentDate;
+      document.getElementById("currentDateDiv").innerText = currentDate;
 
+    // Добавляем прокрутку к активному элементу после его создания
     if (activeDayDiv) {
         setTimeout(() => {
             const index = Array.prototype.indexOf.call(daysContainer.children, activeDayDiv);
             const offset = Math.max(index - 1, 0);
             daysContainer.scrollLeft = daysContainer.children[offset].offsetLeft - daysContainer.offsetWidth / 2 + activeDayDiv.offsetWidth / 2;
-        }, 100);
+        }, 100); // 100 мс задержки перед прокруткой
     }
+
 
     const notificationsDiv = document.querySelector('.notifications');
     const notificationsPanel = document.getElementById('notificationsPanel');
@@ -332,20 +337,23 @@ function showSchedule(course, direction) {
     });
 
     profileIcon.addEventListener('click', function() {
-        deleteButton.style.display = 'block';
+        deleteButton.style.display = 'block'; // Показать кнопку при нажатии на иконку профиля
     });
 }
 
+// Обработчик отправки формы пользователя
 document.getElementById('userForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const course = document.getElementById('course').value;
     const direction = document.getElementById('direction').value;
     const password = document.getElementById('password').value;
 
+    // Проверка пароля
     if (password === '12345678') {
-        const userId = 'user-telegram-id';
+        const userId = 'user-telegram-id'; // Замените на реальный ID пользователя Telegram
         saveUserId(userId, course, direction);
         showSchedule(course, direction);
+        // Скрываем форму и показываем кнопку удаления после ввода данных
         document.getElementById('userForm').classList.add('hidden');
         document.getElementById('deleteButton').classList.remove('hidden');
         document.getElementById('mainContent').classList.remove('hidden');
@@ -354,6 +362,7 @@ document.getElementById('userForm').addEventListener('submit', function(e) {
     }
 });
 
+// Функция для сохранения ID пользователя
 function saveUserId(userId, course, direction) {
     let users = JSON.parse(localStorage.getItem('users')) || [];
     const user = { id: userId, course: course, direction: direction };
@@ -364,6 +373,7 @@ function saveUserId(userId, course, direction) {
     localStorage.setItem('direction', direction);
 }
 
+// Обработчик удаления данных
 document.getElementById('deleteButton').addEventListener('click', function() {
     const userId = localStorage.getItem('userId');
     deleteUserId(userId);
@@ -375,6 +385,7 @@ document.getElementById('deleteButton').addEventListener('click', function() {
     document.getElementById('contour').innerHTML = '';
 });
 
+// Функция для удаления ID пользователя
 function deleteUserId(userId) {
     let users = JSON.parse(localStorage.getItem('users')) || [];
     users = users.filter(user => user.id !== userId);
@@ -384,6 +395,7 @@ function deleteUserId(userId) {
     localStorage.removeItem('direction');
 }
 
+// Проверка данных пользователя при загрузке страницы
 window.onload = function() {
     checkUserData();
 }
