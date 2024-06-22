@@ -232,23 +232,22 @@ body.no-scroll {
 }
 
 #userForm {
-    position: absolute;
-    width: 100%;
-    z-index: 2;
-    background-color: white;
-    transition: transform 0.5s ease-out;
+     position: absolute;
+     width: 100%;
+     z-index: 2;
+     background-color: white;
+     transition: transform 0.5s ease-out;
 }
 
 .slide-out-left {
-    transform: translateX(-100%);
+     transform: translateX(-100%);
 }
 
 #mainContent {
-            opacity: 0; /* Изначально скрыт */
-            transition: opacity 0.5s ease-out 0.5s; /* Задержка для плавного появления после анимации формы */
-        }
+     opacity: 0;
+     transition: opacity 0.5s ease-out 0.5s;
+}
 
-        /* Класс для отображения основного контента */
-        .visible {
-            opacity: 1;
-        }
+.visible {
+     opacity: 1;
+}
