@@ -331,7 +331,7 @@ function showSchedule(course, direction) {
     const cancelDeleteButton = document.getElementById('cancelDeleteButton');
 
     profileIcon.addEventListener('click', function() {
-        deleteModal.classList.remove('hidden');
+        deleteModal.classList.remove('modal-hidden');
     });
 
     confirmDeleteButton.addEventListener('click', function() {
@@ -341,7 +341,7 @@ function showSchedule(course, direction) {
     });
 
     cancelDeleteButton.addEventListener('click', function() {
-        deleteModal.classList.add('hidden');
+        deleteModal.classList.add('modal-hidden');
     });
 }
 
@@ -357,7 +357,7 @@ document.getElementById('userForm').addEventListener('submit', function(e) {
         const userId = 'user-telegram-id'; // Замените на реальный ID пользователя Telegram
         saveUserId(userId, course, direction);
         showSchedule(course, direction);
-        // Скрываем форму и показываем кнопку удаления после ввода данных
+        // Скрываем форму и показываем расписание после ввода данных
         document.getElementById('userForm').classList.add('hidden');
         document.getElementById('mainContent').classList.remove('hidden');
     } else {
