@@ -243,3 +243,6 @@ body.no-scroll {
     transform: translateX(-100%);
 }
 
+#mainContent {
+    opacity: 1;
+}
