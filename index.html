@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>BotTT</title>
-    
 </head>
 <body>
-     <form id="userForm">
+    <form id="userForm">
         <label for="course">Выберите курс:</label>
         <select id="course" name="course" required>
             <option value="1">Курс 1</option>
@@ -28,8 +27,6 @@
         <button type="submit">Отправить</button>
     </form>
 
-    <button id="deleteButton" class="hidden">Удалить данные</button>
-    
     <div class="container1 hidden" id="mainContent">
         <div class="timetable">
             <div class="profile">
@@ -53,12 +50,22 @@
             </div>
         </div>
     </div>
+
     <div class="overlay" id="overlay"></div>
     <div class="notifications-panel" id="notificationsPanel">
         <div class="notifications-content">
             <div class="notifications-header">
                 <h2>Notifications</h2>
             </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно для удаления данных -->
+    <div class="modal hidden" id="deleteModal">
+        <div class="modal-content">
+            <h2>Удалить данные?</h2>
+            <button id="confirmDeleteButton">Удалить</button>
+            <button id="cancelDeleteButton">Отмена</button>
         </div>
     </div>
 
