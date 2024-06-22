@@ -14,7 +14,7 @@ function checkUserData() {
         const userCourse = localStorage.getItem('course');
         const userDirection = localStorage.getItem('direction');
         showSchedule(userCourse, userDirection);
-        // Скрываем форму и показываем кнопку удаления, если данные уже сохранены
+        // Скрываем форму и показываем расписание, если данные уже сохранены
         document.getElementById('userForm').classList.add('hidden');
         document.getElementById('mainContent').classList.remove('hidden');
     }
