@@ -353,14 +353,9 @@ document.getElementById('userForm').addEventListener('submit', function(e) {
         saveUserId(userId, course, direction);
         showSchedule(course, direction);
         // Скрываем форму и показываем кнопку удаления после ввода данных
-        const userForm = document.getElementById('userForm');
-                const mainContent = document.getElementById('mainContent');
-                mainContent.classList.add('visible');
-                userForm.classList.add('slide-out-left');
-                setTimeout(function() {
-                    userForm.classList.add('hidden');
-                    document.getElementById('deleteButton').classList.remove('hidden');
-                }, 500); // Время анимации должно соответствовать времени в transition
+           document.getElementById('userForm').classList.add('hidden');
+        document.getElementById('deleteButton').classList.remove('hidden');
+        document.getElementById('mainContent').classList.remove('hidden');
     } else {
         alert('Неверный пароль');
     }
