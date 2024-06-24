@@ -230,3 +230,7 @@ body.no-scroll {
 .hidden {
     display: none;
 }
+
+form {
+    background-color: #28272C;
+}
