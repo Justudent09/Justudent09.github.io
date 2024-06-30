@@ -15,7 +15,7 @@ function checkUserData() {
         const userDirection = localStorage.getItem('direction');
         showSchedule(userCourse, userDirection);
         // Скрываем форму и показываем кнопку удаления, если данные уже сохранены
-        document.getElementById('userForm').classList.add('hidden');
+        document.getElementById('contact').classList.add('hidden');
         document.getElementById('deleteButton').classList.remove('hidden');
         document.getElementById('mainContent').classList.remove('hidden');
     }
@@ -353,7 +353,7 @@ document.getElementById('userForm').addEventListener('submit', function(e) {
         saveUserId(userId, course, direction);
         showSchedule(course, direction);
         // Скрываем форму и показываем кнопку удаления после ввода данных
-           document.getElementById('userForm').classList.add('hidden');
+           document.getElementById('contact').classList.add('hidden');
         document.getElementById('deleteButton').classList.remove('hidden');
         document.getElementById('mainContent').classList.remove('hidden');
     } else {
@@ -377,7 +377,7 @@ document.getElementById('deleteButton').addEventListener('click', function() {
     const userId = localStorage.getItem('userId');
     deleteUserId(userId);
     alert('Данные удалены. Пожалуйста, обновите страницу.');
-    document.getElementById('userForm').classList.remove('hidden');
+    document.getElementById('contact').classList.remove('hidden');
     document.getElementById('deleteButton').classList.add('hidden');
     document.getElementById('mainContent').classList.add('hidden');
     document.getElementById('daysContainer').innerHTML = '';
