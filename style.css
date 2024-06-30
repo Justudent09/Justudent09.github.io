@@ -231,7 +231,16 @@ body.no-scroll {
     display: none;
 }
 
-        .contact {
+.contact {
+            color: white;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+}
+
+        form {
             padding: 25px;
             width: 70%;
             max-width: 400px; /* Максимальная ширина контейнера */
