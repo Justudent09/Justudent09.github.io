@@ -278,6 +278,10 @@ body.no-scroll {
             transition: border-bottom-color 0.3s ease;
         }
         
+        input {
+            text-align: center;
+        }
+        
         input:focus, select:focus {
             outline: none;
             border-bottom-color: #B4B2E2; /* Цвет линии под полем при фокусе */
