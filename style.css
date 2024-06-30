@@ -234,3 +234,72 @@ body.no-scroll {
 form {
     background-color: #28272C;
 }
+        .contact {
+            padding: 25px;
+            width: 70%;
+            max-width: 400px; /* Максимальная ширина контейнера */
+            box-sizing: border-box;
+            background-color: #28272C;
+            border-radius: 25px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center; /* Центрирование текста и содержимого */
+        }
+        
+        label {
+            display: block;
+            text-align: left;
+            margin-bottom: 5px;
+            color: #B4B2E2; /* Цвет метки */
+            transition: transform 0.3s ease, font-size 0.3s ease, color 0.3s ease;
+            transform-origin: left bottom;
+            transform: translateY(20px) scale(0.9);
+        }
+        
+        .input-container {
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background-color: #28272C;
+            color: white;
+            box-sizing: border-box;
+            font-size: 16px;
+            border-bottom: 1px solid #555; /* Линия под полями ввода */
+            transition: border-bottom-color 0.3s ease;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-bottom-color: #B4B2E2; /* Цвет линии под полем при фокусе */
+        }
+        
+        input:focus + label, input:not(:placeholder-shown) + label {
+            transform: translateY(0) scale(1);
+            color: #B4B2E2;
+        }
+        
+        button {
+            background: linear-gradient(#B4B2E2, #9293DF);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+        
+        button:hover {
+            background: linear-gradient(#9293DF, #B4B2E2);
+        }
+        
+        #deleteButton {
+            margin-top: 20px;
+        }
+        
+        .hidden {
+            display: none;
+        }
