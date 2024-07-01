@@ -302,10 +302,6 @@ body.no-scroll {
             margin-top: 10px;
         }
         
-        button:hover {
-            background: linear-gradient(#9293DF, #B4B2E2);
-        }
-        
         #deleteButton {
             margin-top: 20px;
         }
