@@ -348,7 +348,7 @@ document.getElementById('userForm').addEventListener('submit', function(e) {
     const password = document.getElementById('password').value;
 
     // Проверка пароля
-    if (password === '12345678') {
+    if (password === 'Studyme@1972') {
         const userId = 'user-telegram-id'; // Замените на реальный ID пользователя Telegram
         saveUserId(userId, course, direction);
         showSchedule(course, direction);
