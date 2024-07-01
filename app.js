@@ -331,7 +331,7 @@ function showSchedule(course, direction) {
     deleteButton.style.display = 'none';
     deleteButton.addEventListener('click', function() {
         localStorage.clear();
-        alert('Все данные удалены. Пожалуйста, обновите страницу.');
+        
         location.reload();
     });
 
