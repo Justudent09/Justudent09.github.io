@@ -376,7 +376,7 @@ function saveUserId(userId, course, direction) {
 document.getElementById('deleteButton').addEventListener('click', function() {
     const userId = localStorage.getItem('userId');
     deleteUserId(userId);
-    alert('Данные удалены. Пожалуйста, обновите страницу.');
+    
     document.getElementById('contact').classList.remove('hidden');
     document.getElementById('deleteButton').classList.add('hidden');
     document.getElementById('mainContent').classList.add('hidden');
